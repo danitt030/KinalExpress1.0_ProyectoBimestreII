@@ -1,16 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.danieltuy.controller.MenuProductosController">
    <children>
-      <ImageView fitHeight="621.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="621.0" fitWidth="1100.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MenuProductos.jpg" />
          </image>
       </ImageView>
+      <TableView fx:id="tblProductos" layoutX="172.0" layoutY="220.0" prefHeight="238.0" prefWidth="814.0">
+        <columns>
+          <TableColumn fx:id="colCodProd" prefWidth="103.0" text="codigoProducto" />
+          <TableColumn fx:id="colDescProd" prefWidth="134.0" text="descripcionProducto" />
+            <TableColumn fx:id="colPrecioU" minWidth="5.0" prefWidth="92.0" text="precioUnitario" />
+            <TableColumn fx:id="colPrecioD" minWidth="0.0" prefWidth="92.0" text="precioDocena" />
+            <TableColumn fx:id="colPrecioM" prefWidth="92.0" text="precioMayor" />
+            <TableColumn fx:id="colExistencia" prefWidth="70.0" text="existencia" />
+            <TableColumn fx:id="colCodTipoProd" prefWidth="120.0" text="codigoTipoProducto" />
+            <TableColumn fx:id="colCodProv" prefWidth="109.0" text="codigoProveedor" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnRegresar" layoutX="944.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="83.0">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/CasitaPrincipal.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <GridPane layoutX="434.0" layoutY="84.0" prefHeight="125.0" prefWidth="257.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <TextField fx:id="txtDescPro" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCodigoProd" GridPane.columnIndex="1" />
+            <TextField fx:id="txtPrecioU" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtPrecioD" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="codigoProducto" />
+            <Label prefHeight="30.0" prefWidth="129.0" text="descripciónProducto" GridPane.rowIndex="1" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="precioUnitario" GridPane.rowIndex="2" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="precioDocena" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="737.0" layoutY="87.0" prefHeight="120.0" prefWidth="249.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="30.0" prefWidth="97.0" text="precioMayor" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="existencia" GridPane.rowIndex="1" />
+            <Label prefHeight="30.0" prefWidth="123.0" text="codigoTipoProducto" GridPane.rowIndex="2" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="codigoProveedor" GridPane.rowIndex="3" />
+            <TextField fx:id="txtPrecioM" GridPane.columnIndex="1" />
+            <TextField fx:id="txtExistencia" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <ComboBox fx:id="cmbCodigoTipoP" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <ComboBox fx:id="cmbCodProv" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="295.0" layoutY="493.0" prefHeight="66.0" prefWidth="535.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Reporte" GridPane.columnIndex="3" />
+         </children>
+      </GridPane>
    </children>
 </AnchorPane>
