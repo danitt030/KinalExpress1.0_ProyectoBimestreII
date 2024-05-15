@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.danieltuy.controller.MenuTipoProductoController">
+   <children>
+      <ImageView fitHeight="621.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/MenuTipoProducto.png" />
+         </image>
+      </ImageView>
+      <TableView fx:id="tblTipoProducto" layoutX="309.0" layoutY="198.0" onMouseClicked="#seleccionarElemento" prefHeight="196.0" prefWidth="482.0">
+        <columns>
+          <TableColumn fx:id="colCodigoTipoProductoP" prefWidth="241.0" text="codigoTipoProducto" />
+          <TableColumn fx:id="coldescripcionP" minWidth="9.0" prefWidth="241.0" text="descripcion" />
+        </columns>
+      </TableView>
+      <GridPane layoutX="563.0" layoutY="98.0" prefHeight="65.0" prefWidth="237.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label prefHeight="26.0" prefWidth="120.0" text="codigoTipoProducto" textFill="WHITE" />
+            <Label prefHeight="26.0" prefWidth="120.0" text="descripcion" textFill="WHITE" GridPane.rowIndex="1" />
+            <TextField fx:id="txtCodigoTipoProductoP" GridPane.columnIndex="1" />
+            <TextField fx:id="txtdescripcionP" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="283.0" layoutY="464.0" prefHeight="67.0" prefWidth="535.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" styleClass="button1" stylesheets="@../resource/KinalExpressCSS.css" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#Agregar" prefHeight="60.0" prefWidth="114.0" styleClass="button2" stylesheets="@../resource/KinalExpressCSS.css" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" styleClass="button6" stylesheets="@../resource/KinalExpressCSS.css" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" styleClass="button4" stylesheets="@../resource/KinalExpressCSS.css" text="Reportes" GridPane.columnIndex="3" />
+            <ImageView fx:id="imgAgregar" fitHeight="50.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../images/Agregar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgEliminar" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../images/Eliminar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgReporte" fitHeight="62.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../images/Reporte.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgEditar" fitHeight="56.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Editar.png" />
+               </image>
+            </ImageView>
+         </children>
+      </GridPane>
+      <Button fx:id="btnRegresar" layoutX="867.0" layoutY="417.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="60.0" prefWidth="81.0" styleClass="button5" stylesheets="@../resource/KinalExpressCSS.css">
+         <graphic>
+            <ImageView fx:id="imgReporte1" fitHeight="47.0" fitWidth="57.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/CasitaPrincipal.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+   </children>
+</AnchorPane>

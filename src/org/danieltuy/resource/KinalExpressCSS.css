@@ -1,0 +1,98 @@
+
+.menubar{
+    -fx-background-color: transparent;
+    -fxopacy: 0.5;
+    -fx-border-width: 2.0;
+}
+
+
+.button1 {  
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #3B3D19 ;
+    -fx-background-color: #54A011;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);
+}
+
+
+.button2 {  
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #3B3D19 ;
+    -fx-background-color: #305E61;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);
+}
+
+.button3 {  
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #3B3D19 ;
+    -fx-background-color: #C70B0B;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);
+}
+
+
+.button4 {
+    color: #FBBA06;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #3B3D19 ;
+    -fx-background-color: #3B3D19;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);  
+}
+
+.button5 {  
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #FF6500 ;
+    -fx-background-color: #FF6500;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);
+}
+
+.button6 {  
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #FBBA06 ;
+    -fx-background-color: #FBBA06;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 13px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);
+}
+
+.button7:hover{
+    -fx-font-size:  22px;
+}
+
+.button8:hover { 
+    color: #FBBA06;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+    -fx-border-color: #3B3D19 ;
+    -fx-background-color: #3B3D19;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+    -fx-effect: dropshadow(three-pass-box, black, 10,0,0,0);                
+}
+
+.table-view.column-header,
+.table-view.column-background.filler{
+    -fx-cell-size: 20;
+    -fx-background-color: #305E61;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-size: 16px;
+}
+
+.table-row-cell:selected{
+    -fx-background-color:#C5D0C5;
+}
+
