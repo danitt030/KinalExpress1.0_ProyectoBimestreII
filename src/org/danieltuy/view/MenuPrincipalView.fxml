@@ -52,7 +52,7 @@
                         </ImageView>
                      </graphic>
                   </MenuItem>
-                  <MenuItem fx:id="btnMenuProductos" mnemonicParsing="false" onAction="#handleButtonAction" text="Productos">
+                  <MenuItem mnemonicParsing="false" text="Productos">
                      <graphic>
                         <ImageView fitHeight="30.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                            <image>

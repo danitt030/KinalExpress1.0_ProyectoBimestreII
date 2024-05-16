@@ -15,12 +15,12 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.danieltuy.controller.MenuProductosController">
    <children>
-      <ImageView fitHeight="621.0" fitWidth="1100.0" layoutX="6.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="621.0" fitWidth="1100.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/MenuProductos.jpg" />
          </image>
       </ImageView>
-      <TableView fx:id="tblProductos" layoutX="172.0" layoutY="220.0" prefHeight="238.0" prefWidth="814.0">
+      <TableView fx:id="tblProductos" layoutX="172.0" layoutY="220.0" onMouseClicked="#selecionarElementos" prefHeight="238.0" prefWidth="814.0">
         <columns>
           <TableColumn fx:id="colCodProd" prefWidth="103.0" text="codigoProducto" />
           <TableColumn fx:id="colDescProd" prefWidth="134.0" text="descripcionProducto" />
@@ -96,10 +96,30 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Editar" />
-            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
-            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Reporte" GridPane.columnIndex="3" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
+            <ImageView fx:id="imgEditar" fitHeight="56.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Editar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgAgregar" fitHeight="50.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
+               <image>
+                  <Image url="@../images/Agregar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgEliminar" fitHeight="33.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2">
+               <image>
+                  <Image url="@../images/Eliminar.png" />
+               </image>
+            </ImageView>
+            <ImageView fx:id="imgReporte" fitHeight="62.0" fitWidth="29.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="3">
+               <image>
+                  <Image url="@../images/Reporte.png" />
+               </image>
+            </ImageView>
          </children>
       </GridPane>
    </children>

@@ -118,15 +118,12 @@ create table Productos
     precioUnitario decimal(10,2),
     precioDocena decimal(10,2),
     precioMayor decimal(10,2),
-    imagenProducto varchar(45),
     existencia int not null,
     codigoTipoProducto int not null,
     codigoProveedor int not null,
     primary key PK_codigoProducto (codigoProducto),
 	foreign key (codigoTipoProducto) references TipoProducto(codigoTipoProducto),
 	foreign key (codigoProveedor) references Proveedores(codigoProveedor) 
-    
-
 );
 
 -- DetalleFactura
@@ -140,7 +137,6 @@ create table DetalleFactura
     primary key PK_codigoDetalleFactura (codigoDetalleFactura),
 	foreign key (numeroFactura) references Factura(numeroFactura),
     foreign key (codigoProducto) references Productos(codigoProducto)
-
 );
 
 -- DetalleCompra
@@ -866,21 +862,21 @@ call sp_eliminarFactura();
 
 delimiter $$
 create procedure sp_agregarProductos (in codPro int, in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
-									  in precioMaPro decimal(10,2), in imaPro varchar(45), in existencia int, in codTipPro int,
+									  in precioMaPro decimal(10,2), in existencia int, in codTipPro int,
                                       in codProvPro int )
 	begin 
 	insert into Productos (Productos.codigoProducto, Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
-						   Productos.precioMayor, Productos.imagenProducto, Productos.existencia, Productos.codigoTipoProducto, 
+						   Productos.precioMayor, Productos.existencia, Productos.codigoTipoProducto, 
                            Productos.codigoProveedor)
-    values (codPro, desPro, precioUniPro, precioDocPro, precioMaPro, imaPro, existencia, codTipPro, codProvPro);
+    values (codPro, desPro, precioUniPro, precioDocPro, precioMaPro, existencia, codTipPro, codProvPro);
 	end$$
 delimiter ;
 
-call sp_agregarProductos(1, 'Agua Rica roja 400 ml', 4.00, 48.00, 60.00, 'aa', 100, 1, 1);
-call sp_agregarProductos(2, 'Crema NIVEA para protegernos del sol', 8.00, 96.00, 120.00, 'bb', 100, 2, 2);
-call sp_agregarProductos(3, 'Gaseosa CocaCola 2.5 litros', 18.00, 216.00, 250.00, 'cc', 100, 3, 3);
-call sp_agregarProductos(4, 'Filete de pechuga 3.20LB la bandeja', 15.00, 180.00, 210.00, 'dd', 100, 4, 4 );
-call sp_agregarProductos(5, 'Cepillo dental Colgate', 10.00, 120.00, 160.00, 'ee', 100, 5, 5 );
+call sp_agregarProductos(1, 'Agua Rica roja 400 ml', 4.00, 48.00, 60.00, 100, 1, 1);
+call sp_agregarProductos(2, 'Crema NIVEA para protegernos del sol', 8.00, 96.00, 120.00, 100, 2, 2);
+call sp_agregarProductos(3, 'Gaseosa CocaCola 2.5 litros', 18.00, 216.00, 250.00, 100, 3, 3);
+call sp_agregarProductos(4, 'Filete de pechuga 3.20LB la bandeja', 15.00, 180.00, 210.00, 100, 4, 4 );
+call sp_agregarProductos(5, 'Cepillo dental Colgate', 10.00, 120.00, 160.00, 100, 5, 5 );
 
 -- Listar 
 
@@ -888,7 +884,7 @@ delimiter $$
 	create procedure sp_listarProductos ()
     begin
 		select Productos.codigoProducto, Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
-			   Productos.precioMayor, Productos.imagenProducto, Productos.existencia, Productos.codigoTipoProducto, 
+			   Productos.precioMayor, Productos.existencia, Productos.codigoTipoProducto, 
 			   Productos.codigoProveedor
         from Productos;
     end$$
@@ -902,7 +898,7 @@ delimiter $$
 	create procedure sp_buscarProductos(in codPro int)
     begin
 	select Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
-		   Productos.precioMayor, Productos.imagenProducto, Productos.existencia, Productos.codigoTipoProducto, 
+		   Productos.precioMayor, Productos.existencia, Productos.codigoTipoProducto, 
 		   Productos.codigoProveedor from Productos 
     where Productos.codigoProducto = codPro;
 	end$$
@@ -918,7 +914,7 @@ call sp_buscarProductos(5);
 
 delimiter $$
 	create procedure sp_actualizarProductos(in codPro int, in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
-									        in precioMaPro decimal(10,2), in imaPro varchar(45), in existencia int, in codTipPro int,
+									        in precioMaPro decimal(10,2), in existencia int, in codTipPro int,
                                             in codProvPro int)
     begin
 		update Productos
@@ -927,7 +923,6 @@ delimiter $$
         Productos.precioUnitario = precioUniPro, 
         Productos.precioDocena = precioDocPro,
 		Productos.precioMayor = precioMaPro, 
-        Productos.imagenProducto = imaPro, 
         Productos.existencia = existencia, 
         Productos.codigoTipoProducto = codTipPro, 
 		Productos.codigoProveedor = codProvPro
@@ -936,7 +931,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarProductos(1, 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 'aa', 100, 1, 1);
+call sp_actualizarProductos(1, 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 100, 1, 1);
 
 -- Eliminar
 

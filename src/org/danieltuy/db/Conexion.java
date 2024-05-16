@@ -42,8 +42,7 @@ public class Conexion {
     public Connection getConexion() {
         return conexion;
     }
-    
-    
+
     public void setConexion(Connection conexion) {
         this.conexion = conexion;
     }

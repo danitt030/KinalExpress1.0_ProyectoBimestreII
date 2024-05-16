@@ -13,7 +13,6 @@ import org.danieltuy.controller.MenuCargoEmpleadoController;
 import org.danieltuy.controller.MenuClientesController;
 import org.danieltuy.controller.MenuComprasController;
 import org.danieltuy.controller.MenuPrincipalController;
-import org.danieltuy.controller.MenuProductosController;
 import org.danieltuy.controller.MenuProgramadorController;
 import org.danieltuy.controller.MenuProveedoresController;
 import org.danieltuy.controller.MenuTipoProductoController;
@@ -113,17 +112,6 @@ public class Main extends Application {
             MenuComprasController menuComprasView = (MenuComprasController) cambiarEscena("MenuComprasView.fxml", 1100, 621);
             menuComprasView.setEscenarioPrincipal(this);
         } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-    
-    public void menuProductosView(){
-        try{
-            MenuProductosController menuProductosView = (MenuProductosController)
-                    cambiarEscena("MenuProductosView.fxml", 1100, 621);
-            menuProductosView.setEscenarioPrincipal(this);
-            
-        }catch (Exception e){
             e.printStackTrace();
         }
     }
