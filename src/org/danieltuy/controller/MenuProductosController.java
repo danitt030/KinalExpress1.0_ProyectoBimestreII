@@ -281,7 +281,7 @@ public class MenuProductosController implements Initializable {
                             "Eliminar Productos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
-                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarProductos()}");
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarProductos(?)}");
                             procedimiento.setString(1, ((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoProducto());
                             procedimiento.execute();
                             listaProductos.remove(tblProductos.getSelectionModel().getSelectedItem());
