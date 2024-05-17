@@ -1,4 +1,4 @@
-drop database if exists DBKinalExpress_2023313;
+-- drop database if exists DBKinalExpress_2023313;
 create database DBKinalExpress_2023313;
 use DBKinalExpress_2023313;
 set global time_zone = '-6:00';

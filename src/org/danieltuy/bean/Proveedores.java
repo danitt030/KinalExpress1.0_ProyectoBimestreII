@@ -5,11 +5,11 @@ package org.danieltuy.bean;
  * @author Tuchez
  */
 public class Proveedores {
-    
-   /* 
+
+    /* 
      *Creamos las variables de la base de datos que tienen que ser los mismos
      *y colocarlos en la clase Proveedores.
-    */ 
+     */
     private int codigoProveedor;
     private String NITProveedor;
     private String nombresProveedor;
@@ -18,12 +18,11 @@ public class Proveedores {
     private String razonSocial;
     private String contactoPrincipal;
     private String paginaWeb;
-    
-    
+
     // constructor vacio de la clase Proveedores
     public Proveedores() {
     }
-    
+
     // constructor lleno de la clase Proveedores con las variables.
     public Proveedores(int codigoProveedor, String NITProveedor, String nombresProveedor, String apellidosProveedor, String direccionProveedor, String razonSocial, String contactoPrincipal, String paginaWeb) {
         this.codigoProveedor = codigoProveedor;
@@ -35,7 +34,7 @@ public class Proveedores {
         this.contactoPrincipal = contactoPrincipal;
         this.paginaWeb = paginaWeb;
     }
-    
+
     // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
     public int getCodigoProveedor() {
         return codigoProveedor;
@@ -100,15 +99,13 @@ public class Proveedores {
     public void setPaginaWeb(String paginaWeb) {
         this.paginaWeb = paginaWeb;
     }
-    
+
     // Se hace un to String para que nos muestre los datos al momento de listar el comboBox
     @Override
     public String toString() {
-        return getCodigoProveedor() + " " + getNITProveedor() + " " + getNombresProveedor() +
-               getNombresProveedor() + " " + getApellidosProveedor() + " " + getDireccionProveedor() +
-               getRazonSocial() + " " + getContactoPrincipal() + " " + getPaginaWeb();
+        return getCodigoProveedor() + " " + getNITProveedor() + " " + getNombresProveedor()
+                + getNombresProveedor() + " " + getApellidosProveedor() + " " + getDireccionProveedor()
+                + getRazonSocial() + " " + getContactoPrincipal() + " " + getPaginaWeb();
     }
-    
-    
 
 }

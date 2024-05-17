@@ -5,11 +5,11 @@ package org.danieltuy.bean;
  * @author Tuchez
  */
 public class Clientes {
-    
+
     /* 
      *Creamos las variables de la base de datos que tienen que ser los mismos
      *y colocarlos en la clase Clientes.
-    */
+     */
     private int codigoCliente;
     private String NITCliente;
     private String nombresCliente;
@@ -17,12 +17,11 @@ public class Clientes {
     private String direccionCliente;
     private String telefonoCliente;
     private String correoCliente;
-    
+
     // constructor vacio de la clase Clientes.
     public Clientes() {
     }
-    
-    
+
     // constructor lleno de la clase Clientes ya con sus variables.
     public Clientes(int codigoCliente, String NITCliente, String nombresCliente, String apellidosCliente, String direccionCliente, String telefonoCliente, String correoCliente) {
         this.codigoCliente = codigoCliente;
@@ -33,9 +32,8 @@ public class Clientes {
         this.telefonoCliente = telefonoCliente;
         this.correoCliente = correoCliente;
     }
-    
-    // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
 
+    // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
     public int getCodigoCliente() {
         return codigoCliente;
     }

@@ -28,7 +28,13 @@ import org.danieltuy.controller.MenuTipoProductoController;
  */
 public class Main extends Application {
 
+     
+    /* 
+     *Creamos una variable privada y esto presenta la ventana principal que nos
+     *y esto nos mostrar escenas diferentes de nuestro programa.
+     */
     private Stage escenarioPrincipal;
+    // Creamos esta variable que representa la escena de nuestro prograna.
     private Scene escena;
 
     @Override
@@ -60,6 +66,7 @@ public class Main extends Application {
         return resultado;
     }
 
+    // Esto es un metodo que nos permite ver el menuPrincipal de nuestro programa
     public void MenuPrincipalView() {
         try {
             MenuPrincipalController menuPrincipalView = (MenuPrincipalController) cambiarEscena("MenuPrincipalView.fxml", 668, 588);
@@ -70,6 +77,7 @@ public class Main extends Application {
         }
     }
 
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuClientesView
     public void menuClientesView() {
         try {
             MenuClientesController menuClientesView = (MenuClientesController) cambiarEscena("MenuClientesView.fxml", 1100, 621);
@@ -80,7 +88,8 @@ public class Main extends Application {
         }
 
     }
-
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTipoProducto
     public void menuTipoProductoView() {
         try {
             MenuTipoProductoController menuTipoProductoView = (MenuTipoProductoController) cambiarEscena("MenuTipoProductoView.fxml", 1100, 621);
@@ -89,7 +98,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProveedoresView
     public void menuProveedoresView() {
         try {
             MenuProveedoresController menuProveedoresView = (MenuProveedoresController) cambiarEscena("MenuProveedoresView.fxml", 1100, 621);
@@ -98,7 +108,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuCargoEmpleadoView
     public void menuCargoEmpleadoView() {
         try {
             MenuCargoEmpleadoController menuCargoEmpleadoView = (MenuCargoEmpleadoController) cambiarEscena("MenuCargoEmpleadoView.fxml", 1100, 621);
@@ -107,7 +118,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuComprasView
     public void menuComprasView() {
         try {
             MenuComprasController menuComprasView = (MenuComprasController) cambiarEscena("MenuComprasView.fxml", 1100, 621);
@@ -117,6 +129,7 @@ public class Main extends Application {
         }
     }
     
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProductosView
     public void menuProductosView(){
         try{
             MenuProductosController menuProductosView = (MenuProductosController) cambiarEscena("MenuProductosView.fxml", 1100, 621);
@@ -125,7 +138,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProgramador
     public void Programador() {
         try {
             MenuProgramadorController programador = (MenuProgramadorController) cambiarEscena("Programador.fxml", 993, 556);
