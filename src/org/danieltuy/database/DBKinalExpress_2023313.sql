@@ -1,4 +1,4 @@
--- drop database if exists DBKinalExpress_2023313;
+drop database if exists DBKinalExpress_2023313;
 create database DBKinalExpress_2023313;
 use DBKinalExpress_2023313;
 set global time_zone = '-6:00';
@@ -861,7 +861,7 @@ call sp_eliminarFactura();
 -- Agregar 
 
 delimiter $$
-create procedure sp_agregarProductos (in codPro int, in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
+create procedure sp_agregarProductos (in codPro varchar(45), in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
 									  in precioMaPro decimal(10,2), in existencia int, in codTipPro int,
                                       in codProvPro int )
 	begin 
@@ -872,11 +872,11 @@ create procedure sp_agregarProductos (in codPro int, in desPro varchar(45), in p
 	end$$
 delimiter ;
 
-call sp_agregarProductos(1, 'Agua Rica roja 400 ml', 4.00, 48.00, 60.00, 100, 1, 1);
-call sp_agregarProductos(2, 'Crema NIVEA para protegernos del sol', 8.00, 96.00, 120.00, 100, 2, 2);
-call sp_agregarProductos(3, 'Gaseosa CocaCola 2.5 litros', 18.00, 216.00, 250.00, 100, 3, 3);
-call sp_agregarProductos(4, 'Filete de pechuga 3.20LB la bandeja', 15.00, 180.00, 210.00, 100, 4, 4 );
-call sp_agregarProductos(5, 'Cepillo dental Colgate', 10.00, 120.00, 160.00, 100, 5, 5 );
+call sp_agregarProductos('1', 'Agua Rica roja 400 ml', 4.00, 48.00, 60.00, 100, 1, 1);
+call sp_agregarProductos('2', 'Crema NIVEA para protegernos del sol', 8.00, 96.00, 120.00, 100, 2, 2);
+call sp_agregarProductos('3', 'Gaseosa CocaCola 2.5 litros', 18.00, 216.00, 250.00, 100, 3, 3);
+call sp_agregarProductos('4', 'Filete de pechuga 3.20LB la bandeja', 15.00, 180.00, 210.00, 100, 4, 4 );
+call sp_agregarProductos('5', 'Cepillo dental Colgate', 10.00, 120.00, 160.00, 100, 5, 5 );
 
 -- Listar 
 
@@ -895,7 +895,7 @@ call sp_listarProductos();
 -- Buscar 
 
 delimiter $$
-	create procedure sp_buscarProductos(in codPro int)
+	create procedure sp_buscarProductos(in codPro varchar(45))
     begin
 	select Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
 		   Productos.precioMayor, Productos.existencia, Productos.codigoTipoProducto, 
@@ -904,16 +904,16 @@ delimiter $$
 	end$$
 delimiter ;
 
-call sp_buscarProductos(1);
-call sp_buscarProductos(2);
-call sp_buscarProductos(3);
-call sp_buscarProductos(4);
-call sp_buscarProductos(5);
+call sp_buscarProductos('1');
+call sp_buscarProductos('2');
+call sp_buscarProductos('3');
+call sp_buscarProductos('4');
+call sp_buscarProductos('5');
 
 -- Actualizar
 
 delimiter $$
-	create procedure sp_actualizarProductos(in codPro int, in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
+	create procedure sp_actualizarProductos(in codPro varchar(45), in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
 									        in precioMaPro decimal(10,2), in existencia int, in codTipPro int,
                                             in codProvPro int)
     begin
@@ -931,12 +931,12 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarProductos(1, 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 100, 1, 1);
+call sp_actualizarProductos('1', 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 100, 1, 1);
 
 -- Eliminar
 
 delimiter $$
-	create procedure sp_eliminarProductos (in codPro int)
+	create procedure sp_eliminarProductos (in codPro varchar(45))
     begin
 		delete from Productos where Productos.codigoProducto = codPro;
     end$$

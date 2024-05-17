@@ -1,3 +1,8 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package org.danieltuy.controller;
 
 import java.net.URL;
@@ -33,33 +38,32 @@ public class MenuProductosController implements Initializable {
 
     private Main escenarioPrincipal;
 
-    @FXML
-    private Button btnRegresar;
-
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
     private ObservableList<Productos> listaProductos;
     private ObservableList<Proveedores> listaProveedores;
-    private ObservableList<TipoProducto> listaTipoDeProducto;
+    private ObservableList<TipoProducto> listaTipoProducto;
 
+    @FXML
+    private Button btnRegresar;
     @FXML
     private TextField txtCodigoProd;
     @FXML
     private TextField txtDescPro;
     @FXML
-    private TextField txtPrecioU;
+    private TextField txtPrecioUPro;
     @FXML
-    private TextField txtPrecioD;
+    private TextField txtPrecioDPro;
     @FXML
-    private TextField txtPrecioM;
+    private TextField txtPrecioMPro;
     @FXML
-    private TextField txtExistencia;
+    private TextField txtExistenciaPro;
     @FXML
     private ComboBox cmbCodigoTipoP;
     @FXML
-    private ComboBox cmbCodProv;
+    private ComboBox cmbCodProvPro;
     @FXML
     private TableView tblProductos;
     @FXML
@@ -98,8 +102,8 @@ public class MenuProductosController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
-        cmbCodigoTipoP.setItems(getTipoP());
-        cmbCodProv.setItems(getProveedores());
+        cmbCodigoTipoP.setItems(getTipoProducto());
+        cmbCodProvPro.setItems(getProveedores());
     }
 
     public void cargarDatos() {
@@ -109,56 +113,30 @@ public class MenuProductosController implements Initializable {
         colPrecioU.setCellValueFactory(new PropertyValueFactory<Productos, Double>("precioUnitario"));
         colPrecioD.setCellValueFactory(new PropertyValueFactory<Productos, Double>("precioDocena"));
         colPrecioM.setCellValueFactory(new PropertyValueFactory<Productos, Double>("precioMayor"));
-        colExistencia.setCellValueFactory(new PropertyValueFactory<Productos, Integer>("existencia"));
+        colExistencia.setCellValueFactory(new PropertyValueFactory<Productos, Double>("existencia"));
         colCodTipoProd.setCellValueFactory(new PropertyValueFactory<Productos, Integer>("codigoTipoProducto"));
         colCodProv.setCellValueFactory(new PropertyValueFactory<Productos, Integer>("codigoProveedor"));
     }
 
-    public void selecionarElementos() {
+    public void seleccionarElementos() {
         txtCodigoProd.setText(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoProducto());
         txtDescPro.setText(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getDescripcionProducto());
-        txtPrecioU.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioUnitario()));
-        txtPrecioD.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioDocena()));
-        txtPrecioM.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioMayor()));
-        txtExistencia.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getExistencia()));
-        cmbCodigoTipoP.getSelectionModel().select(buscarTipoProducto(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoTipoProducto()));
-        cmbCodProv.getSelectionModel().select(buscarProv(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
+        txtPrecioUPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioUnitario()));
+        txtPrecioDPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioDocena()));
+        txtPrecioMPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioMayor()));
+        txtExistenciaPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getExistencia()));
+
     }
 
     public TipoProducto buscarTipoProducto(int codigoTipoProducto) {
         TipoProducto resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarTipoProducto(?)}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarTipoProducto()}");
             procedimiento.setInt(1, codigoTipoProducto);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
                 resultado = new TipoProducto(registro.getInt("codigoTipoProducto"),
-                        registro.getString("descripcionProducto")
-                );
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return resultado;
-    }
-    
-    public Proveedores buscarProv(int codigoProveedor) {
-        Proveedores resultado = null;
-        try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedores(?)}");
-            procedimiento.setInt(1, codigoProveedor);
-            ResultSet registro = procedimiento.executeQuery();
-            while (registro.next()) {
-                resultado = new Proveedores(registro.getInt("codigoProveedor"),
-                        registro.getString("NITProveedor"),
-                        registro.getString("nombresProveedor"),
-                        registro.getString("apellidosProveedor"),
-                        registro.getString("direccionProveedor"),
-                        registro.getString("razonSocial"),
-                        registro.getString("contactoPrincipal"),
-                        registro.getString("paginaWeb")
-                );
+                        registro.getString("descripcion"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -179,116 +157,112 @@ public class MenuProductosController implements Initializable {
                         resultado.getDouble("precioMayor"),
                         resultado.getInt("existencia"),
                         resultado.getInt("codigoTipoProducto"),
-                        resultado.getInt("codigoProveedor")
-                ));
+                        resultado.getInt("codigoProveedor")));
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         return listaProductos = FXCollections.observableArrayList(lista);
 
     }
 
     public ObservableList<Proveedores> getProveedores() {
-        ArrayList<Proveedores> listaPro = new ArrayList<>();
+        ArrayList<Proveedores> lista = new ArrayList<>();
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_listarProveedores()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
-                listaPro.add(new Proveedores(resultado.getInt("codigoProveedor"),
+                lista.add(new Proveedores(resultado.getInt("codigoProveedor"),
                         resultado.getString("NITProveedor"),
                         resultado.getString("nombresProveedor"),
                         resultado.getString("apellidosProveedor"),
                         resultado.getString("direccionProveedor"),
                         resultado.getString("razonSocial"),
                         resultado.getString("contactoPrincipal"),
-                        resultado.getString("paginaWeb")
-                ));
+                        resultado.getString("paginaWeb")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return listaProveedores = FXCollections.observableList(listaPro);
+        return listaProveedores = FXCollections.observableList(lista);
     }
 
-    public ObservableList<TipoProducto> getTipoP() {
+    public ObservableList<TipoProducto> getTipoProducto() {
         ArrayList<TipoProducto> lista = new ArrayList<>();
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_listarTipoProducto()}");
             ResultSet resultado = procedimiento.executeQuery();
             while (resultado.next()) {
                 lista.add(new TipoProducto(resultado.getInt("codigoTipoProducto"),
-                        resultado.getString("descripcion")
-                ));
+                        resultado.getString("descripcion")));
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return listaTipoDeProducto = FXCollections.observableList(lista);
+        return listaTipoProducto = FXCollections.observableList(lista);
     }
 
-    public void agregar (){
-         switch(tipoDeOperaciones){
-             case NINGUNO:
-              activarControles();
-             btnAgregar.setText("Guardar");
-             btnEliminar.setText("Cancelar");
-             btnEditar.setDisable(true);
-             btnReporte.setDisable(true);   
-             tipoDeOperaciones = operaciones.ACTUALIZAR;
-             break;
-             case ACTUALIZAR:
-             guardar ();
-             desactivarControles();
-             limpiarControles ();
-             btnAgregar.setText("Agregar");
-             btnEliminar.setText("Eliminar");
-             btnEditar.setDisable(false);
-             btnReporte.setDisable(false);
-             tipoDeOperaciones = operaciones.NINGUNO;
-             cargarDatos();
-             break;
-         }
-     
-     
-     
-     
-     }
-     
-     
-     public void guardar (){
-         Productos registro = new Productos();
-         registro.setCodigoProducto(txtCodigoProd.getText());
-         registro.setCodigoProveedor(((Proveedores)cmbCodProv.getSelectionModel().getSelectedItem()).getCodigoProveedor());
-         registro.setCodigoTipoProducto(((TipoProducto)cmbCodigoTipoP.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
-         registro.setDescripcionProducto(txtDescPro.getText());
-         registro.setPrecioDocena(Double.parseDouble(txtPrecioD.getText()));
-         registro.setPrecioUnitario(Double.parseDouble(txtPrecioU.getText()));
-         registro.setPrecioMayor(Double.parseDouble(txtPrecioM.getText()));
-         registro.setExistencia(Integer.parseInt(txtExistencia.getText()));
-         try {
-        PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarProductos(?, ?, ?, ?, ?, ?, ?, ?)}");
-        procedimiento.setString(1, registro.getCodigoProducto());
-        procedimiento.setString(2, registro.getDescripcionProducto());
-        procedimiento.setDouble(3, registro.getPrecioUnitario());
-        procedimiento.setDouble(4, registro.getPrecioDocena());
-        procedimiento.setDouble(5, registro.getPrecioMayor());
-        procedimiento.setInt(6, registro.getExistencia());
-        procedimiento.setInt(7, registro.getCodigoProveedor());
-        procedimiento.setInt(8, registro.getCodigoTipoProducto());
-        procedimiento.execute();
-        
-        listaProductos.add(registro);
+    public void agregar() {
+        switch (tipoDeOperaciones) {
+            case NINGUNO:
+                activarControles();
+                btnAgregar.setText("Guardar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(true);
+                btnReporte.setDisable(true);
+                imgAgregar.setImage(new Image("/org/danieltuy/images/ImagenGuardar.png"));
+                imgEliminar.setImage(new Image("/org/danieltuy/images/ImagenCancelar.png"));
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
+                break;
+            case ACTUALIZAR:
+                guardar();
+                desactivarControles();
+                limpiarControles();
+                btnAgregar.setText("Guardar");
+                btnEliminar.setText("Eliminar");
+                btnEditar.setDisable(false);
+                btnReporte.setDisable(false);
+                imgAgregar.setImage(new Image("/org/danieltuy/images/Agregar.png"));
+                imgEliminar.setImage(new Image("/org/danieltuy/images/Eliminar.png"));
+                tipoDeOperaciones = operaciones.NINGUNO;
+                cargarDatos();
+                break;
+        }
 
-         }catch (Exception e){
-             e.printStackTrace();
-         }
-     
-     }
-     
-     public void eliminar() {
+    }
+
+    // COLOCARLO EN ORDEN COMO ESTA LA BASE DE DATOS PARA QUE NO CRASHEE EL PROGRAMA
+    public void guardar() {
+        Productos registro = new Productos();
+        registro.setCodigoProducto(txtCodigoProd.getText());
+        registro.setDescripcionProducto(txtDescPro.getText());
+        registro.setPrecioUnitario(Double.parseDouble(txtPrecioUPro.getText()));
+        registro.setPrecioDocena(Double.parseDouble(txtPrecioDPro.getText()));
+        registro.setPrecioMayor(Double.parseDouble(txtPrecioMPro.getText()));
+        registro.setExistencia(Integer.parseInt(txtExistenciaPro.getText()));
+        registro.setCodigoTipoProducto(((TipoProducto) cmbCodigoTipoP.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
+        registro.setCodigoProveedor(((Proveedores) cmbCodProvPro.getSelectionModel().getSelectedItem()).getCodigoProveedor());
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_agregarProductos(?, ?, ?, ?, ?, ?, ?, ?)}");
+            procedimiento.setString(1, registro.getCodigoProducto());
+            procedimiento.setString(2, registro.getDescripcionProducto());
+            procedimiento.setDouble(3, registro.getPrecioUnitario());
+            procedimiento.setDouble(4, registro.getPrecioDocena());
+            procedimiento.setDouble(5, registro.getPrecioMayor());
+            procedimiento.setInt(6, registro.getExistencia());
+            procedimiento.setInt(7, registro.getCodigoTipoProducto());
+            procedimiento.setInt(8, registro.getCodigoProveedor());
+            procedimiento.execute();
+
+            listaProductos.add(registro);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
                 desactivarControles();
@@ -304,10 +278,10 @@ public class MenuProductosController implements Initializable {
             default:
                 if (tblProductos.getSelectionModel().getSelectedItem() != null) {
                     int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar la eliminacion del registro",
-                            "Eliminar producto", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            "Eliminar Productos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
-                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarProductos(?)}");
+                            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarProductos()}");
                             procedimiento.setString(1, ((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoProducto());
                             procedimiento.execute();
                             listaProductos.remove(tblProductos.getSelectionModel().getSelectedItem());
@@ -318,7 +292,7 @@ public class MenuProductosController implements Initializable {
                         }
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar producto para eliminar");
+                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un producto para eliminar");
                 }
         }
     }
@@ -338,7 +312,7 @@ public class MenuProductosController implements Initializable {
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el producto para editar");
+                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el proveedor para editar");
                 }
                 break;
             case ACTUALIZAR:
@@ -361,27 +335,27 @@ public class MenuProductosController implements Initializable {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_actualizarProductos(?, ?, ?, ?, ?, ?, ?, ?)}");
             Productos registro = (Productos) tblProductos.getSelectionModel().getSelectedItem();
-            registro.setCodigoProveedor(((Proveedores) cmbCodProv.getSelectionModel().getSelectedItem()).getCodigoProveedor());
-            registro.setCodigoTipoProducto(((TipoProducto) cmbCodigoTipoP.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
             registro.setDescripcionProducto(txtDescPro.getText());
-            registro.setPrecioDocena(Double.parseDouble(txtPrecioD.getText()));
-            registro.setPrecioUnitario(Double.parseDouble(txtPrecioU.getText()));
-            registro.setPrecioMayor(Double.parseDouble(txtPrecioM.getText()));
-            registro.setExistencia(Integer.parseInt(txtExistencia.getText()));
+            registro.setPrecioUnitario(Double.parseDouble(txtPrecioUPro.getText()));
+            registro.setPrecioDocena(Double.parseDouble(txtPrecioDPro.getText()));
+            registro.setPrecioMayor(Double.parseDouble(txtPrecioMPro.getText()));
+            registro.setExistencia(Integer.parseInt(txtExistenciaPro.getText()));
+            registro.setCodigoTipoProducto(((TipoProducto) cmbCodigoTipoP.getSelectionModel().getSelectedItem()).getCodigoTipoProducto());
+            registro.setCodigoProveedor(((Proveedores) cmbCodProvPro.getSelectionModel().getSelectedItem()).getCodigoProveedor());
             procedimiento.setString(1, registro.getCodigoProducto());
             procedimiento.setString(2, registro.getDescripcionProducto());
             procedimiento.setDouble(3, registro.getPrecioUnitario());
             procedimiento.setDouble(4, registro.getPrecioDocena());
             procedimiento.setDouble(5, registro.getPrecioMayor());
             procedimiento.setInt(6, registro.getExistencia());
-            procedimiento.setInt(7, registro.getCodigoProveedor());
-            procedimiento.setInt(8, registro.getCodigoTipoProducto());
+            procedimiento.setInt(7, registro.getCodigoTipoProducto());
+            procedimiento.setInt(8, registro.getCodigoProveedor());
             procedimiento.execute();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     public void reportes() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -401,38 +375,35 @@ public class MenuProductosController implements Initializable {
     public void desactivarControles() {
         txtCodigoProd.setEditable(false);
         txtDescPro.setEditable(false);
-        txtPrecioU.setEditable(false);
-        txtPrecioD.setEditable(false);
-        txtPrecioM.setEditable(false);
-        txtExistencia.setEditable(false);
+        txtPrecioUPro.setEditable(false);
+        txtPrecioDPro.setEditable(false);
+        txtPrecioMPro.setEditable(false);
+        txtExistenciaPro.setEditable(false);
         cmbCodigoTipoP.setDisable(true);
-        cmbCodigoTipoP.setDisable(true);
-
+        cmbCodProvPro.setDisable(true);
     }
 
     public void activarControles() {
         txtCodigoProd.setEditable(true);
         txtDescPro.setEditable(true);
-        txtPrecioU.setEditable(true);
-        txtPrecioD.setEditable(true);
-        txtPrecioM.setEditable(true);
-        txtExistencia.setEditable(true);
+        txtPrecioUPro.setEditable(true);
+        txtPrecioDPro.setEditable(true);
+        txtPrecioMPro.setEditable(true);
+        txtExistenciaPro.setEditable(true);
         cmbCodigoTipoP.setDisable(false);
-        cmbCodigoTipoP.setDisable(false);
-
+        cmbCodProvPro.setDisable(false);
     }
 
     public void limpiarControles() {
         txtCodigoProd.clear();
         txtDescPro.clear();
-        txtPrecioU.clear();
-        txtPrecioD.clear();
-        txtPrecioM.clear();
-        txtExistencia.clear();
+        txtPrecioUPro.clear();
+        txtPrecioDPro.clear();
+        txtPrecioMPro.clear();
+        txtExistenciaPro.clear();
         tblProductos.getSelectionModel().getSelectedItem();
         cmbCodigoTipoP.getSelectionModel().getSelectedItem();
-        cmbCodigoTipoP.getSelectionModel().getSelectedItem();
-
+        cmbCodProvPro.getSelectionModel().getSelectedItem();
     }
 
     public void setEscenarioPrincipal(Main escenarioPrincipal) {
@@ -454,5 +425,4 @@ public class MenuProductosController implements Initializable {
         }
 
     }
-
 }

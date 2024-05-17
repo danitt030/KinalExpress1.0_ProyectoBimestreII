@@ -8,7 +8,7 @@ public class Compras {
     
     /* 
      *Creamos las variables de la base de datos que tienen que ser los mismos
-     *y colocarlos en la clase Clientes.
+     *y colocarlos en la clase Compras.
     */
     private int numeroDocumento;
     private String fechaDocumento;

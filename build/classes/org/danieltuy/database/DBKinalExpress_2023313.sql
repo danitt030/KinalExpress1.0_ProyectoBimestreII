@@ -1,4 +1,4 @@
--- drop database if exists DBKinalExpress_2023313;
+drop database if exists DBKinalExpress_2023313;
 create database DBKinalExpress_2023313;
 use DBKinalExpress_2023313;
 set global time_zone = '-6:00';
@@ -244,11 +244,11 @@ begin
 end$$
 delimiter ;
 
-call sp_agregarTipoProducto(1,'Agua Rica roja 400 ml');
-call sp_agregarTipoProducto(2,'Crema NIVEA para protegernos del sol');
-call sp_agregarTipoProducto(3,'Gaseosa CocaCola 2.5 litros');
-call sp_agregarTipoProducto(4,'Filete de pechuga 3.20LB la bandeja');
-call sp_agregarTipoProducto(5,'Cepillo dental Colgate');
+call sp_agregarTipoProducto(1,'Aguas');
+call sp_agregarTipoProducto(2,'Cremas para el cuerpo');
+call sp_agregarTipoProducto(3,'Gaseosas');
+call sp_agregarTipoProducto(4,'Filetes');
+call sp_agregarTipoProducto(5,'Cepillos dentales');
 
 -- Listar 
 
@@ -289,7 +289,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarTipoProducto(1,'Tambo agua salvavidas');
+call sp_actualizarTipoProducto(1,'agua salvavidas');
 
 -- Eliminar
 
@@ -393,11 +393,11 @@ begin
 end$$
 delimiter ;	
 
-call sp_agregarProveedores(1,'12347894-9','Carlos José','Méndez Oliva','Almacén 18 carretera al Salvador', 'risitos', 'risitos12@gmail.com', 'www.risitos.com');
-call sp_agregarProveedores(2,'56448494-7','José Luis','Martínez López','Km8 carretera el Atlántico', 'López y Asociados S.A.', 'info@lopezyasociados.com', 'www.lopezyasociados.com');
-call sp_agregarProveedores(3,'79849416-4','Juan Pablo','Pérez Ramírez','Zona1 10a avenida', 'García Hermanos Ltda.', 'contacto@garciahermanos.com','www.garciahermanos.com');
-call sp_agregarProveedores(4,'98748651-1','Miguel Ángel','González Fernández','Almacén zona 16 ciudad Cayalá', 'Martínez Consultores SAS', 'consultas@martinezconsultores.com', 'www.martinezconsultores.com');
-call sp_agregarProveedores(5,'56415454-3','Andrés Felipe','Rodríguez Martínez','zona 10 almacen la Estación', 'Rodríguez & Co. Abogados SC.', 'info@rodriguezabogados.com', 'www.rodriguezabogados.com');
+call sp_agregarProveedores(1,'12347894-9','Carlos José','Méndez Oliva','Almacén 18 carretera al Salvador', 'aguas', 'aguas12@gmail.com', 'www.aguas.com');
+call sp_agregarProveedores(2,'56448494-7','José Luis','Martínez López','Km8 carretera el Atlántico', 'Cremas Nivea', 'cremasNIVEA@gmail.com', 'www.CREMASNIVEA.com');
+call sp_agregarProveedores(3,'79849416-4','Juan Pablo','Pérez Ramírez','Zona1 10a avenida', 'Gasesoas el mirador', 'gaseosamirados@gmail.com','www.gasesosasMirador.com');
+call sp_agregarProveedores(4,'98748651-1','Miguel Ángel','González Fernández','Almacén zona 16 ciudad Cayalá', 'Filetes y carnes', 'filetesCarnes@gmail.com', 'www.Tiposdecarnes.com');
+call sp_agregarProveedores(5,'56415454-3','Andrés Felipe','Rodríguez Martínez','zona 10 almacen la Estación', 'Empresa colgate', 'colgate@gmail.com', 'www.colgate.com');
 
 -- Listar 
 
@@ -450,7 +450,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarProveedores(1,'12347894-9','Carlos José','Méndez Oliva','Almacén 18 carretera al Salvador', 'Perez Contabilidad', 'perezcontabilidad@gmail.com', 'www.contabilidadPerez.com');
+call sp_actualizarProveedores(1,'12347894-9','Carlos José','Méndez Oliva','Almacén 18 carretera al Salvador', 'aguas Tuchez', 'aguas12@gmail.com', 'www.aguas.com');
 
 -- Eliminar
 
@@ -551,11 +551,11 @@ delimiter $$
 end$$
 delimiter ;
 
-call sp_agregarTelefonoProveedor(1, '12345678', '98765421', 'Encargados de llevar la mercaderia', 1);
-call sp_agregarTelefonoProveedor(2, '23456789', '87654321', 'Contacto para envíos', 2);
-call sp_agregarTelefonoProveedor(3, '34567890', '76543210', 'Soporte técnico', 3);
-call sp_agregarTelefonoProveedor(4, '45678901', '65432109', 'Atención al cliente', 4);
-call sp_agregarTelefonoProveedor(5, '56789012', '54321098', 'Consultas generales', 5);
+call sp_agregarTelefonoProveedor(1, '12345678', '98765421', 'Entregar las aguas', 1);
+call sp_agregarTelefonoProveedor(2, '23456789', '87654321', 'Nos ofrecen cremas', 2);
+call sp_agregarTelefonoProveedor(3, '34567890', '76543210', 'La mejor empresa de gaseosas', 3);
+call sp_agregarTelefonoProveedor(4, '45678901', '65432109', 'De exportar las carnes y filetes', 4);
+call sp_agregarTelefonoProveedor(5, '56789012', '54321098', 'Ofrecen productos dentales', 5);
 
 -- Listar 
 
@@ -604,7 +604,7 @@ in codPro int)
     end$$
 delimiter ;
 
-call sp_actualizarTelefonoProveedor(1, '12345678', '98765421', 'Encargados de entregar mercaderia', 1);
+call sp_actualizarTelefonoProveedor(1, '12345678', '98765421', 'Entregar aguas salvavidas', 1);
 
 -- Eliminar
 
@@ -712,11 +712,11 @@ begin
 end$$
 delimiter ;
 
-call sp_agregarEmailProveedor(1, 'risitos12@gmail.com', 'vender ricitos', 1);
-call sp_agregarEmailProveedor(2, 'info@lopezyasociados.com', 'Bebidas saludables', 2);
-call sp_agregarEmailProveedor(3, 'contacto@garciahermanos.com','Carnes', 3);
-call sp_agregarEmailProveedor(4, 'consultas@martinezconsultores.com', 'Consulta de precios', 4);
-call sp_agregarEmailProveedor(5, 'info@rodriguezabogados.com', 'Abogados', 5);
+call sp_agregarEmailProveedor(1, 'aguas12@gmail.com', 'Entregar las aguas', 1);
+call sp_agregarEmailProveedor(2, 'cremasNIVEA@gmail.com', 'Nos ofrecen cremas', 2);
+call sp_agregarEmailProveedor(3, 'gaseosamirados@gmail.com','Las mejor empresa de gaseosas', 3);
+call sp_agregarEmailProveedor(4, 'filetesCarnes@gmail.com', 'De exportar las carnes y filetes', 4);
+call sp_agregarEmailProveedor(5, 'colgate@gmail.com', 'Ofrecen productos dentales', 5);
 
 -- Listar 
 
@@ -762,7 +762,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarEmailProveedor(1, 'risitos12@gmail.com', 'Dar ricitos a la empresa', 1);
+call sp_actualizarEmailProveedor(1, 'aguas12@gmail.com', 'Entregar el producto', 1);
 
 -- Eliminar
 
@@ -861,7 +861,7 @@ call sp_eliminarFactura();
 -- Agregar 
 
 delimiter $$
-create procedure sp_agregarProductos (in codPro int, in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
+create procedure sp_agregarProductos (in codPro varchar(45), in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
 									  in precioMaPro decimal(10,2), in existencia int, in codTipPro int,
                                       in codProvPro int )
 	begin 
@@ -872,11 +872,11 @@ create procedure sp_agregarProductos (in codPro int, in desPro varchar(45), in p
 	end$$
 delimiter ;
 
-call sp_agregarProductos(1, 'Agua Rica roja 400 ml', 4.00, 48.00, 60.00, 100, 1, 1);
-call sp_agregarProductos(2, 'Crema NIVEA para protegernos del sol', 8.00, 96.00, 120.00, 100, 2, 2);
-call sp_agregarProductos(3, 'Gaseosa CocaCola 2.5 litros', 18.00, 216.00, 250.00, 100, 3, 3);
-call sp_agregarProductos(4, 'Filete de pechuga 3.20LB la bandeja', 15.00, 180.00, 210.00, 100, 4, 4 );
-call sp_agregarProductos(5, 'Cepillo dental Colgate', 10.00, 120.00, 160.00, 100, 5, 5 );
+call sp_agregarProductos('1', 'Agua Rica roja 400 ml', 4.00, 48.00, 60.00, 100, 1, 1);
+call sp_agregarProductos('2', 'Crema NIVEA para protegernos del sol', 8.00, 96.00, 120.00, 100, 2, 2);
+call sp_agregarProductos('3', 'Gaseosa CocaCola 2.5 litros', 18.00, 216.00, 250.00, 100, 3, 3);
+call sp_agregarProductos('4', 'Filete de pechuga 3.20LB la bandeja', 15.00, 180.00, 210.00, 100, 4, 4 );
+call sp_agregarProductos('5', 'Cepillo dental Colgate', 10.00, 120.00, 160.00, 100, 5, 5 );
 
 -- Listar 
 
@@ -895,7 +895,7 @@ call sp_listarProductos();
 -- Buscar 
 
 delimiter $$
-	create procedure sp_buscarProductos(in codPro int)
+	create procedure sp_buscarProductos(in codPro varchar(45))
     begin
 	select Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
 		   Productos.precioMayor, Productos.existencia, Productos.codigoTipoProducto, 
@@ -904,16 +904,16 @@ delimiter $$
 	end$$
 delimiter ;
 
-call sp_buscarProductos(1);
-call sp_buscarProductos(2);
-call sp_buscarProductos(3);
-call sp_buscarProductos(4);
-call sp_buscarProductos(5);
+call sp_buscarProductos('1');
+call sp_buscarProductos('2');
+call sp_buscarProductos('3');
+call sp_buscarProductos('4');
+call sp_buscarProductos('5');
 
 -- Actualizar
 
 delimiter $$
-	create procedure sp_actualizarProductos(in codPro int, in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
+	create procedure sp_actualizarProductos(in codPro varchar(45), in desPro varchar(45), in precioUniPro decimal(10,2), in precioDocPro decimal(10,2),
 									        in precioMaPro decimal(10,2), in existencia int, in codTipPro int,
                                             in codProvPro int)
     begin
@@ -931,12 +931,12 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarProductos(1, 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 100, 1, 1);
+call sp_actualizarProductos('1', 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 100, 1, 1);
 
 -- Eliminar
 
 delimiter $$
-	create procedure sp_eliminarProductos (in codPro int)
+	create procedure sp_eliminarProductos (in codPro varchar(45))
     begin
 		delete from Productos where Productos.codigoProducto = codPro;
     end$$
@@ -957,6 +957,7 @@ create procedure sp_agregarDetalleFactura (in codDetaFac int, in precioUniFac de
     values (codDetaFac, precioUniFac, cantiFac, numFac, codProFac);
 	end$$
 delimiter ;
+
 
 call sp_agregarDetalleFactura(1, 4.00, 1, 1, 1);
 call sp_agregarDetalleFactura(2, 8.00, 5, 2, 2);

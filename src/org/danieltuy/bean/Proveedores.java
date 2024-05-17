@@ -100,5 +100,15 @@ public class Proveedores {
     public void setPaginaWeb(String paginaWeb) {
         this.paginaWeb = paginaWeb;
     }
+    
+    // Se hace un to String para que nos muestre los datos al momento de listar el comboBox
+    @Override
+    public String toString() {
+        return getCodigoProveedor() + " " + getNITProveedor() + " " + getNombresProveedor() +
+               getNombresProveedor() + " " + getApellidosProveedor() + " " + getDireccionProveedor() +
+               getRazonSocial() + " " + getContactoPrincipal() + " " + getPaginaWeb();
+    }
+    
+    
 
 }
