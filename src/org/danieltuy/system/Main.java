@@ -34,7 +34,6 @@ import org.danieltuy.controller.MenuTipoProductoController;
  */
 public class Main extends Application {
 
-     
     /* 
      *Creamos una variable privada y esto presenta la ventana principal que nos
      *y esto nos mostrar escenas diferentes de nuestro programa.
@@ -94,7 +93,7 @@ public class Main extends Application {
         }
 
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTipoProducto
     public void menuTipoProductoView() {
         try {
@@ -104,7 +103,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProveedoresView
     public void menuProveedoresView() {
         try {
@@ -114,7 +113,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuCargoEmpleadoView
     public void menuCargoEmpleadoView() {
         try {
@@ -124,7 +123,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuComprasView
     public void menuComprasView() {
         try {
@@ -134,17 +133,17 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProductosView
-    public void menuProductosView(){
-        try{
+    public void menuProductosView() {
+        try {
             MenuProductosController menuProductosView = (MenuProductosController) cambiarEscena("MenuProductosView.fxml", 1100, 621);
             menuProductosView.setEscenarioPrincipal(this);
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTelefonoProveedorView
     public void menuTelefonoProveedorView() {
         try {
@@ -154,8 +153,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
-        // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTelefonoProveedorView
+
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuEmailProveedorView
     public void menuEmailProveedorView() {
         try {
             MenuEmailProveedorController menuEmailProveedorView = (MenuEmailProveedorController) cambiarEscena("MenuEmailProveedorView.fxml", 1100, 621);
@@ -164,7 +163,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuEmpleadosView
     public void menuEmpleadosView() {
         try {
@@ -174,7 +173,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuFacturaView
     public void menuFacturaView() {
         try {
@@ -184,7 +183,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuDetalleCompraView
     public void menuDetalleCompraView() {
         try {
@@ -194,8 +193,8 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
-        // Esto es un metodo que nos permite cambiar del menuPrincipal al menuDetalleFacturaView
+
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuDetalleFacturaView
     public void menuDetalleFacturaView() {
         try {
             MenuDetalleFacturaController menuDetalleFacturaView = (MenuDetalleFacturaController) cambiarEscena("MenuDetalleFacturaView.fxml", 1100, 621);
@@ -204,8 +203,7 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
-    
-    
+
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProgramador
     public void Programador() {
         try {

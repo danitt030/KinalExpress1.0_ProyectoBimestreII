@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package org.danieltuy.bean;
 
 /**
@@ -10,7 +5,11 @@ package org.danieltuy.bean;
  * @author Tuchez
  */
 public class Empleados {
-    
+
+    /* 
+     *Creamos las variables de la base de datos que tienen que ser los mismos
+     *y colocarlos en la clase Empleados.
+     */
     private int codigoEmpleado;
     private String nombresEmpleados;
     private String apellidosEmpleados;
@@ -19,9 +18,11 @@ public class Empleados {
     private String turno;
     private int codigoCargoEmpleado;
 
+    // constructor vacio de la clase Empleados
     public Empleados() {
     }
 
+    // constructor lleno de la clase Empleados con las variables.
     public Empleados(int codigoEmpleado, String nombresEmpleados, String apellidosEmpleados, double sueldo, String direccion, String turno, int codigoCargoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
         this.nombresEmpleados = nombresEmpleados;
@@ -32,6 +33,7 @@ public class Empleados {
         this.codigoCargoEmpleado = codigoCargoEmpleado;
     }
 
+    // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
     public int getCodigoEmpleado() {
         return codigoEmpleado;
     }
@@ -87,6 +89,5 @@ public class Empleados {
     public void setCodigoCargoEmpleado(int codigoCargoEmpleado) {
         this.codigoCargoEmpleado = codigoCargoEmpleado;
     }
-    
-    
+
 }

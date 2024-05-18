@@ -12,15 +12,15 @@ import org.danieltuy.system.Main;
  *
  * @author Tuchez
  */
-public class MenuTelefonoProveedorController implements Initializable{
-    
+public class MenuTelefonoProveedorController implements Initializable {
+
     private Main escenarioPrincipal;
     @FXML
     private Button btnRegresar;
-    
-        @Override
+
+    @Override
     public void initialize(URL location, ResourceBundle resources) {
-         
+
     }
 
     public void setEscenarioPrincipal(Main escenarioPrincipal) {

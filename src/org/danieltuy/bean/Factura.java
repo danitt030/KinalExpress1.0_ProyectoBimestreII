@@ -5,7 +5,11 @@ package org.danieltuy.bean;
  * @author Tuchez
  */
 public class Factura {
-    
+
+    /* 
+     *Creamos las variables de la base de datos que tienen que ser los mismos
+     *y colocarlos en la clase Factura.
+     */
     private int numeroFactura;
     private String estado;
     private double totalFactura;
@@ -13,9 +17,11 @@ public class Factura {
     private int codigoCliente;
     private int codigoEmpleado;
 
+    // constructor vacio de la clase Factura
     public Factura() {
     }
 
+    // constructor lleno de la clase Factura con las variables.
     public Factura(int numeroFactura, String estado, double totalFactura, String fechaFactura, int codigoCliente, int codigoEmpleado) {
         this.numeroFactura = numeroFactura;
         this.estado = estado;
@@ -25,6 +31,7 @@ public class Factura {
         this.codigoEmpleado = codigoEmpleado;
     }
 
+    // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
     public int getNumeroFactura() {
         return numeroFactura;
     }
@@ -72,6 +79,5 @@ public class Factura {
     public void setCodigoEmpleado(int codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
-    
-    
+
 }

@@ -5,16 +5,22 @@ package org.danieltuy.bean;
  * @author Tuchez
  */
 public class DetalleCompra {
-    
+
+    /* 
+     *Creamos las variables de la base de datos que tienen que ser los mismos
+     *y colocarlos en la clase DetalleCompra.
+     */
     private int codigoDetalleCompra;
     private double costoUnitario;
     private int cantidad;
     private String codigoProducto;
     private int numeroDocumento;
 
+    // constructor vacio de la clase DetalleCompra
     public DetalleCompra() {
     }
 
+    // constructor lleno de la clase DetalleCompra con las variables.
     public DetalleCompra(int codigoDetalleCompra, double costoUnitario, int cantidad, String codigoProducto, int numeroDocumento) {
         this.codigoDetalleCompra = codigoDetalleCompra;
         this.costoUnitario = costoUnitario;
@@ -23,6 +29,7 @@ public class DetalleCompra {
         this.numeroDocumento = numeroDocumento;
     }
 
+    // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
     public int getCodigoDetalleCompra() {
         return codigoDetalleCompra;
     }
@@ -62,6 +69,5 @@ public class DetalleCompra {
     public void setNumeroDocumento(int numeroDocumento) {
         this.numeroDocumento = numeroDocumento;
     }
-    
-    
+
 }

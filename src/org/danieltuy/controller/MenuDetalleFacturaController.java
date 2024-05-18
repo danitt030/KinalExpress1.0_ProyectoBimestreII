@@ -43,4 +43,3 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 }
-

@@ -6,6 +6,10 @@ package org.danieltuy.bean;
  */
 public class Productos {
 
+    /* 
+     *Creamos las variables de la base de datos que tienen que ser los mismos
+     *y colocarlos en la clase Productos.
+     */
     private String codigoProducto;
     private String descripcionProducto;
     private double precioUnitario;
@@ -15,9 +19,11 @@ public class Productos {
     private int codigoTipoProducto;
     private int codigoProveedor;
 
+    // constructor vacio de la clase Productos
     public Productos() {
     }
 
+    // constructor lleno de la clase Productos con las variables.
     public Productos(String codigoProducto, String descripcionProducto, double precioUnitario, double precioDocena, double precioMayor, int existencia, int codigoTipoProducto, int codigoProveedor) {
         this.codigoProducto = codigoProducto;
         this.descripcionProducto = descripcionProducto;
@@ -29,6 +35,7 @@ public class Productos {
         this.codigoProveedor = codigoProveedor;
     }
 
+    // Hice get y set de cada una de las variables, ya que get es para llamar y el set para enviar.
     public String getCodigoProducto() {
         return codigoProducto;
     }
@@ -92,7 +99,7 @@ public class Productos {
     public void setCodigoProveedor(int codigoProveedor) {
         this.codigoProveedor = codigoProveedor;
     }
-    
+
     // Se hace un to String para que nos muestre los datos al momento de listar el comboBox de la clase productos
     @Override
     public String toString() {
