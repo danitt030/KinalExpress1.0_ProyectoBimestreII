@@ -62,7 +62,7 @@
             <ComboBox fx:id="cmbCodCargEmple" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
-      <TableView fx:id="tblEmpleados" layoutX="159.0" layoutY="216.0" prefHeight="238.0" prefWidth="836.0">
+      <TableView fx:id="tblEmpleados" layoutX="159.0" layoutY="216.0" onMouseClicked="#seleccionarElementos" prefHeight="238.0" prefWidth="836.0">
          <columns>
             <TableColumn fx:id="colCodigoEmple" prefWidth="116.0" text="codigoEmpleado" />
             <TableColumn fx:id="colNomEmple" prefWidth="133.0" text="nombresEmpleados" />
@@ -84,10 +84,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Editar" />
-            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
-            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
             <ImageView fx:id="imgEditar" fitHeight="56.0" fitWidth="41.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Editar.png" />
