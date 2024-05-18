@@ -46,7 +46,7 @@
             <ComboBox fx:id="cmbCodProvProve" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <TableView fx:id="tblTelefonoProveedor" layoutX="216.0" layoutY="243.0" prefHeight="226.0" prefWidth="668.0">
+      <TableView fx:id="tblTelefonoProveedor" layoutX="216.0" layoutY="243.0" onMouseClicked="#seleccionarElementos" prefHeight="226.0" prefWidth="668.0">
         <columns>
           <TableColumn fx:id="colCodigoTelProve" minWidth="138.0" prefWidth="160.0" text="codigoTelefonoProveedor" />
           <TableColumn fx:id="colNumPrinProve" minWidth="98.0" prefWidth="121.0" text="numeroPrincipal" />
@@ -75,10 +75,10 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Editar" />
-            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
-            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
             <ImageView fx:id="imgAgregar" fitHeight="50.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@../images/Agregar.png" />
