@@ -12,10 +12,16 @@ import javafx.stage.Stage;
 import org.danieltuy.controller.MenuCargoEmpleadoController;
 import org.danieltuy.controller.MenuClientesController;
 import org.danieltuy.controller.MenuComprasController;
+import org.danieltuy.controller.MenuDetalleCompraController;
+import org.danieltuy.controller.MenuDetalleFacturaController;
+import org.danieltuy.controller.MenuEmailProveedorController;
+import org.danieltuy.controller.MenuEmpleadosController;
+import org.danieltuy.controller.MenuFacturaController;
 import org.danieltuy.controller.MenuPrincipalController;
 import org.danieltuy.controller.MenuProductosController;
 import org.danieltuy.controller.MenuProgramadorController;
 import org.danieltuy.controller.MenuProveedoresController;
+import org.danieltuy.controller.MenuTelefonoProveedorController;
 import org.danieltuy.controller.MenuTipoProductoController;
 
 /**
@@ -138,6 +144,67 @@ public class Main extends Application {
             e.printStackTrace();
         }
     }
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTelefonoProveedorView
+    public void menuTelefonoProveedorView() {
+        try {
+            MenuTelefonoProveedorController menuTelefonoProveedorView = (MenuTelefonoProveedorController) cambiarEscena("MenuTelefonoProveedorView.fxml", 1100, 621);
+            menuTelefonoProveedorView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+        // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTelefonoProveedorView
+    public void menuEmailProveedorView() {
+        try {
+            MenuEmailProveedorController menuEmailProveedorView = (MenuEmailProveedorController) cambiarEscena("MenuEmailProveedorView.fxml", 1100, 621);
+            menuEmailProveedorView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuEmpleadosView
+    public void menuEmpleadosView() {
+        try {
+            MenuEmpleadosController menuEmpleadosView = (MenuEmpleadosController) cambiarEscena("MenuEmpleadosView.fxml", 1100, 621);
+            menuEmpleadosView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuFacturaView
+    public void menuFacturaView() {
+        try {
+            MenuFacturaController menuFacturaView = (MenuFacturaController) cambiarEscena("MenuFacturaView.fxml", 1100, 621);
+            menuFacturaView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuDetalleCompraView
+    public void menuDetalleCompraView() {
+        try {
+            MenuDetalleCompraController menuDetalleCompraView = (MenuDetalleCompraController) cambiarEscena("MenuDetalleCompraView.fxml", 1100, 621);
+            menuDetalleCompraView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+        // Esto es un metodo que nos permite cambiar del menuPrincipal al menuDetalleFacturaView
+    public void menuDetalleFacturaView() {
+        try {
+            MenuDetalleFacturaController menuDetalleFacturaView = (MenuDetalleFacturaController) cambiarEscena("MenuDetalleFacturaView.fxml", 1100, 621);
+            menuDetalleFacturaView.setEscenarioPrincipal(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
     
     // Esto es un metodo que nos permite cambiar del menuPrincipal al menuProgramador
     public void Programador() {
