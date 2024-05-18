@@ -55,7 +55,7 @@
             <TableColumn fx:id="colCodProvProve" minWidth="0.0" prefWidth="116.0" text="codigoProveedor" />
         </columns>
       </TableView>
-      <Button layoutX="917.0" layoutY="464.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="88.0">
+      <Button fx:id="btnRegresar" layoutX="917.0" layoutY="464.0" mnemonicParsing="false" prefHeight="67.0" prefWidth="88.0">
          <graphic>
             <ImageView fitHeight="63.0" fitWidth="73.0" pickOnBounds="true" preserveRatio="true">
                <image>
