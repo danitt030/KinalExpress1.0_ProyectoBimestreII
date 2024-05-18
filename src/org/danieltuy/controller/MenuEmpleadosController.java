@@ -308,7 +308,7 @@ public class MenuEmpleadosController implements Initializable {
             registro.setDireccion(txtDireEmple.getText());
             registro.setTurno(txtTurEmple.getText());
             registro.setCodigoCargoEmpleado(((CargoEmpleado) cmbCodCargEmple.getSelectionModel().getSelectedItem()).getCodigoCargoEmpleado());
-             procedimiento.setInt(1, registro.getCodigoEmpleado());
+            procedimiento.setInt(1, registro.getCodigoEmpleado());
             procedimiento.setString(2, registro.getNombresEmpleados());
             procedimiento.setString(3, registro.getApellidosEmpleados());
             procedimiento.setDouble(4, registro.getSueldo());

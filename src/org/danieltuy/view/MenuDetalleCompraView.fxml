@@ -37,11 +37,11 @@
             <TextField fx:id="txtCosUniDetaComp" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <TextField fx:id="txtCodDetaComp" GridPane.columnIndex="1" />
             <TextField fx:id="txtCanDetaComp" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Label prefHeight="30.0" prefWidth="116.0" text="codigoDetalleCompra" textFill="WHITE" />
-            <Label prefHeight="30.0" prefWidth="129.0" text="costoUnitario" textFill="WHITE" GridPane.rowIndex="1" />
-            <Label prefHeight="30.0" prefWidth="97.0" text="cantidad" textFill="WHITE" GridPane.rowIndex="2" />
-            <Label prefHeight="30.0" prefWidth="97.0" text="codigoProducto" textFill="WHITE" GridPane.rowIndex="3" />
-            <Label prefHeight="30.0" prefWidth="110.0" text="numeroDocumento" textFill="WHITE" GridPane.rowIndex="4" />
+            <Label prefHeight="30.0" prefWidth="116.0" text="codigoDetalleCompra" />
+            <Label prefHeight="30.0" prefWidth="129.0" text="costoUnitario" GridPane.rowIndex="1" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="cantidad" GridPane.rowIndex="2" />
+            <Label prefHeight="30.0" prefWidth="97.0" text="codigoProducto" GridPane.rowIndex="3" />
+            <Label prefHeight="30.0" prefWidth="110.0" text="numeroDocumento" GridPane.rowIndex="4" />
             <ComboBox fx:id="cmbCodProDetaComp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
             <ComboBox fx:id="cmbNumDocDetaComp" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
