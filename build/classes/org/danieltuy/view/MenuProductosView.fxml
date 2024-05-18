@@ -32,7 +32,7 @@
             <TableColumn fx:id="colCodProv" prefWidth="109.0" text="codigoProveedor" />
         </columns>
       </TableView>
-      <Button fx:id="btnRegresar" layoutX="944.0" layoutY="483.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="83.0">
+      <Button fx:id="btnRegresar" layoutX="945.0" layoutY="490.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="83.0">
          <graphic>
             <ImageView fitHeight="45.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -85,7 +85,7 @@
             <ComboBox fx:id="cmbCodProvPro" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
          </children>
       </GridPane>
-      <GridPane layoutX="295.0" layoutY="493.0" prefHeight="66.0" prefWidth="535.0">
+      <GridPane layoutX="290.0" layoutY="510.0" prefHeight="66.0" prefWidth="535.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />

@@ -69,7 +69,7 @@ public class Main extends Application {
     // Esto es un metodo que nos permite ver el menuPrincipal de nuestro programa
     public void MenuPrincipalView() {
         try {
-            MenuPrincipalController menuPrincipalView = (MenuPrincipalController) cambiarEscena("MenuPrincipalView.fxml", 668, 588);
+            MenuPrincipalController menuPrincipalView = (MenuPrincipalController) cambiarEscena("MenuPrincipalView.fxml", 710, 620);
             menuPrincipalView.setEscenarioPrincipal(this);
         } catch (Exception e) {
             // System.out.println(e.getMessage());

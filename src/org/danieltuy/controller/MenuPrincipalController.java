@@ -17,7 +17,7 @@ public class MenuPrincipalController implements Initializable {
     private Main escenarioPrincipal;
     @FXML
     MenuItem btnMenuClientes, btnMenuProgramador, btnMenuTipoProducto, btnMenuProveedores,
-            btnMenuCargoEmpleado, btnMenuCompras, btnMenuProductos;
+            btnMenuCargoEmpleado, btnMenuCompras, btnMenuProductos, btnMenuTelefonoProveedor;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
