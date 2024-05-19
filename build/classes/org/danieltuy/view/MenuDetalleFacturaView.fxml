@@ -65,10 +65,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" text="Editar" />
-            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
-            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" styleClass="button1" stylesheets="@../resource/KinalExpressCSS.css" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefHeight="60.0" prefWidth="114.0" styleClass="button6" stylesheets="@../resource/KinalExpressCSS.css" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" styleClass="button3" stylesheets="@../resource/KinalExpressCSS.css" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" styleClass="button4" stylesheets="@../resource/KinalExpressCSS.css" text="Reportes" GridPane.columnIndex="3" />
             <ImageView fx:id="imgAgregar" fitHeight="50.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@../images/Agregar.png" />
@@ -91,7 +91,7 @@
             </ImageView>
          </children>
       </GridPane>
-      <Button fx:id="btnRegresar" layoutX="923.0" layoutY="475.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="50.0" prefWidth="83.0">
+      <Button fx:id="btnRegresar" layoutX="915.0" layoutY="445.0" mnemonicParsing="false" onAction="#handleButtonAction" prefHeight="66.0" prefWidth="82.0" styleClass="button5" stylesheets="@../resource/KinalExpressCSS.css">
          <graphic>
             <ImageView fitHeight="45.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true">
                <image>
