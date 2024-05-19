@@ -258,7 +258,7 @@ public class MenuEmpleadosController implements Initializable {
                         }
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un producto para eliminar");
+                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un Empleado para eliminar");
                 }
         }
     }
@@ -278,7 +278,7 @@ public class MenuEmpleadosController implements Initializable {
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el proveedor para editar");
+                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el Empleado para editar");
                 }
                 break;
             case ACTUALIZAR:

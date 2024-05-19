@@ -79,5 +79,12 @@ public class Factura {
     public void setCodigoEmpleado(int codigoEmpleado) {
         this.codigoEmpleado = codigoEmpleado;
     }
+    
+    // Se hace un to String para que nos muestre los datos al momento de listar el comboBox
+    @Override
+    public String toString() {
+        return getNumeroFactura() + "  ";
+    }
+    
 
 }

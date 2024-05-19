@@ -245,7 +245,7 @@ public class MenuEmailProveedorController implements Initializable {
                         }
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un producto para eliminar");
+                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un email del proveedor para eliminar");
                 }
         }
     }
@@ -265,7 +265,7 @@ public class MenuEmailProveedorController implements Initializable {
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el proveedor para editar");
+                    JOptionPane.showMessageDialog(null, "Debe de seleccionar email del proveedor para editar");
                 }
                 break;
             case ACTUALIZAR:

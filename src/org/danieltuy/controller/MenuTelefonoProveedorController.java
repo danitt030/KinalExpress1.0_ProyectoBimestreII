@@ -250,7 +250,7 @@ public class MenuTelefonoProveedorController implements Initializable {
                         }
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un producto para eliminar");
+                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar el telefono del proveedor para eliminar");
                 }
         }
     }
@@ -270,7 +270,7 @@ public class MenuTelefonoProveedorController implements Initializable {
                     tipoDeOperaciones = operaciones.ACTUALIZAR;
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el proveedor para editar");
+                    JOptionPane.showMessageDialog(null, "Debe de seleccionar el telefono del proveedor para editar");
                 }
                 break;
             case ACTUALIZAR:
