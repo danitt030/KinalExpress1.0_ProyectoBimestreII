@@ -14,7 +14,13 @@ import org.danieltuy.system.Main;
  */
 public class MenuPrincipalController implements Initializable {
 
+    // Referencia a la clase principal Main
     private Main escenarioPrincipal;
+
+    /*
+     *Elementos del MenuPrincipal con sus las variables de cada boton que son
+     *En el archivo FXML
+    */ 
     @FXML
     MenuItem btnMenuClientes, btnMenuProgramador, btnMenuTipoProducto, btnMenuProveedores,
             btnMenuCargoEmpleado, btnMenuCompras, btnMenuProductos, btnMenuTelefonoProveedor,
@@ -25,16 +31,27 @@ public class MenuPrincipalController implements Initializable {
 
     }
 
+    // Obtiene de la clase Main donde llama al escenario principal.
     public Main getEscenarioPrincipal() {
         return escenarioPrincipal;
     }
 
+    // Referencia a la clase Main donde establece al escenario principal.
     public void setEscenarioPrincipal(Main escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    /* 
+     *Aqui utilizamos el metodo handleButtonAction que nos sirve para
+     *que cada boton se puede realizar la accion de acceder a los menus 
+     *del programa.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
+        /* 
+         *Aqui utilice un if else para el boton para acceder a los menus, para que el usuario puede
+         *ingresar a diferentes menus.
+         */
         if (event.getSource() == btnMenuClientes) {
             escenarioPrincipal.menuClientesView();
         } else if (event.getSource() == btnMenuProgramador) {

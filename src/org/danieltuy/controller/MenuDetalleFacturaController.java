@@ -330,7 +330,7 @@ public class MenuDetalleFacturaController implements Initializable {
             procedimiento.setInt(4, registro.getNumeroFactura());
             procedimiento.setString(5, registro.getCodigoProducto());
             procedimiento.execute();
-            procedimiento.execute();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
