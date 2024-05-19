@@ -101,7 +101,7 @@ public class MenuFacturaController implements Initializable {
         colFechaFac.setCellValueFactory(new PropertyValueFactory<Factura, Integer>("fechaFactura"));
         colCodigoClienFac.setCellValueFactory(new PropertyValueFactory<Factura, Integer>("codigoCliente"));
         colCodigoEmpleFac.setCellValueFactory(new PropertyValueFactory<Factura, Integer>("codigoEmpleado"));
-       
+
     }
 
     public void seleccionarElementos() {
@@ -109,7 +109,6 @@ public class MenuFacturaController implements Initializable {
         txtEstaFac.setText(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getEstado());
         txtTotalFac.setText(String.valueOf(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getTotalFactura()));
         txtFechaFac.setText(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getFechaFactura());
-        
 
     }
 
@@ -202,7 +201,7 @@ public class MenuFacturaController implements Initializable {
             case NINGUNO:
                 activarControles();
                 btnAgregar.setText("Guardar");
-                btnEliminar.setText("Eliminar");
+                btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
                 btnReporte.setDisable(true);
                 imgAgregar.setImage(new Image("/org/danieltuy/images/ImagenGuardar.png"));
@@ -212,18 +211,18 @@ public class MenuFacturaController implements Initializable {
             case ACTUALIZAR:
                 guardar();
                 desactivarControles();
+                cargarDatos();
                 limpiarControles();
-                btnAgregar.setText("Guardar");
-                btnEliminar.setText("Eliminar");
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("eliminar");
                 btnEditar.setDisable(false);
                 btnReporte.setDisable(false);
                 imgAgregar.setImage(new Image("/org/danieltuy/images/Agregar.png"));
                 imgEliminar.setImage(new Image("/org/danieltuy/images/Eliminar.png"));
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
                 tipoDeOperaciones = operaciones.NINGUNO;
-                cargarDatos();
                 break;
         }
-
     }
 
     // COLOCARLO EN ORDEN COMO ESTA LA BASE DE DATOS PARA QUE NO CRASHEE EL PROGRAMA
@@ -268,7 +267,7 @@ public class MenuFacturaController implements Initializable {
             default:
                 if (tblFactura.getSelectionModel().getSelectedItem() != null) {
                     int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar la eliminacion del registro",
-                            "Eliminar Productos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            "Eliminar factura", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
                             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarFactura(?)}");
@@ -282,7 +281,7 @@ public class MenuFacturaController implements Initializable {
                         }
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar un producto para eliminar");
+                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar la factura para eliminar");
                 }
         }
     }

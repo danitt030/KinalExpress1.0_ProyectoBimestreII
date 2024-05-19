@@ -169,7 +169,7 @@ public class MenuEmailProveedorController implements Initializable {
             case NINGUNO:
                 activarControles();
                 btnAgregar.setText("Guardar");
-                btnEliminar.setText("Eliminar");
+                btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
                 btnReporte.setDisable(true);
                 imgAgregar.setImage(new Image("/org/danieltuy/images/ImagenGuardar.png"));
@@ -179,18 +179,18 @@ public class MenuEmailProveedorController implements Initializable {
             case ACTUALIZAR:
                 guardar();
                 desactivarControles();
+                cargarDatos();
                 limpiarControles();
-                btnAgregar.setText("Guardar");
-                btnEliminar.setText("Eliminar");
+                btnAgregar.setText("Agregar");
+                btnEliminar.setText("eliminar");
                 btnEditar.setDisable(false);
                 btnReporte.setDisable(false);
                 imgAgregar.setImage(new Image("/org/danieltuy/images/Agregar.png"));
                 imgEliminar.setImage(new Image("/org/danieltuy/images/Eliminar.png"));
+                tipoDeOperaciones = operaciones.ACTUALIZAR;
                 tipoDeOperaciones = operaciones.NINGUNO;
-                cargarDatos();
                 break;
         }
-
     }
 
     // COLOCARLO EN ORDEN COMO ESTA LA BASE DE DATOS PARA QUE NO CRASHEE EL PROGRAMA

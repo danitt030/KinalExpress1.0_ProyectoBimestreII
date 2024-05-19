@@ -13,7 +13,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="621.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.danieltuy.controller.MenuDetalleFacturaController">
    <children>
       <ImageView fitHeight="621.0" fitWidth="1100.0" pickOnBounds="true" preserveRatio="true">
@@ -46,7 +45,7 @@
             <ComboBox fx:id="cmbCodProDetaFac" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
          </children>
       </GridPane>
-      <TableView fx:id="tblDetalleFactura" layoutX="270.0" layoutY="237.0" prefHeight="238.0" prefWidth="560.0">
+      <TableView fx:id="tblDetalleFactura" layoutX="270.0" layoutY="237.0" onMouseClicked="#seleccionarElementos" prefHeight="238.0" prefWidth="560.0">
          <columns>
             <TableColumn fx:id="colCodDetaFac" prefWidth="132.0" text="codigoDetalleFactura" />
             <TableColumn fx:id="colPreUniDetaFac" prefWidth="106.0" text="precioUnitario" />
@@ -66,10 +65,10 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
          </rowConstraints>
          <children>
-            <Button fx:id="btnEditar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Editar" />
-            <Button fx:id="btnAgregar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
-            <Button fx:id="btnEliminar" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
-            <Button fx:id="btnReporte" mnemonicParsing="false" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
+            <Button fx:id="btnEditar" mnemonicParsing="false" onAction="#editar" prefHeight="60.0" prefWidth="114.0" text="Editar" />
+            <Button fx:id="btnAgregar" mnemonicParsing="false" onAction="#agregar" prefHeight="60.0" prefWidth="114.0" text="Agregar" GridPane.columnIndex="1" />
+            <Button fx:id="btnEliminar" mnemonicParsing="false" onAction="#eliminar" prefHeight="60.0" prefWidth="114.0" text="Eliminar" GridPane.columnIndex="2" />
+            <Button fx:id="btnReporte" mnemonicParsing="false" onAction="#reportes" prefHeight="60.0" prefWidth="114.0" text="Reportes" GridPane.columnIndex="3" />
             <ImageView fx:id="imgAgregar" fitHeight="50.0" fitWidth="36.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1">
                <image>
                   <Image url="@../images/Agregar.png" />
