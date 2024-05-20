@@ -31,7 +31,7 @@ import org.danieltuy.controller.MenuTipoProductoController;
  * Codigo tecnico:IN5BM 
  * Fecha de Creacion: 10/04/2024 
  * Fecha de modificaciones: 26/04/2024 10/05/2024 16/05/2024
- * 18/05/2024 19/05/2024 
+ * 18/05/2024 19/05/2024 20/05/2024
  */
 public class Main extends Application {
 
@@ -95,7 +95,7 @@ public class Main extends Application {
 
     }
 
-    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTipoProducto
+    // Esto es un metodo que nos permite cambiar del menuPrincipal al menuTipoProductoView
     public void menuTipoProductoView() {
         try {
             MenuTipoProductoController menuTipoProductoView = (MenuTipoProductoController) cambiarEscena("MenuTipoProductoView.fxml", 1100, 621);

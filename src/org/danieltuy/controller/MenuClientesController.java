@@ -29,16 +29,22 @@ import org.danieltuy.system.Main;
  */
 public class MenuClientesController implements Initializable {
 
+    // Se importa la clase Main para que podamos realizar las acciones.
     private Main escenarioPrincipal;
 
+    // Se utilizan enumeradores ya que se puede utilizar como metodos
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
+    // Se utiliza un ObservableList para llamar a la clase Clientes.
     @FXML
     ObservableList<Clientes> listaClientes;
+
+    // Colocamos la variable btnRegresar para que podamos regresar al menu
     @FXML
     private Button btnRegresar;
+    // Utilizamos un textField para que el usuario ingrese los datos.
     @FXML
     private TextField txtCodigoC;
     @FXML
@@ -53,8 +59,13 @@ public class MenuClientesController implements Initializable {
     private TextField txtDireccionC;
     @FXML
     private TextField txtCorreoC;
+    // Un table view para que se muestren los datos de la tabla Clientes
     @FXML
     private TableView tblClientes;
+    /* 
+     * Un table column para que muestre los datos, siempre hay que colocarlos ordenados
+     * para que no se nos dificulte colocarlos en cada metodo.
+     */
     @FXML
     private TableColumn colCodigoC;
     @FXML
@@ -69,6 +80,7 @@ public class MenuClientesController implements Initializable {
     private TableColumn colDireccionC;
     @FXML
     private TableColumn colCorreoC;
+    // Utilizamos botones para que el usuario pueda realiza accion con cada uno.
     @FXML
     private Button btnEditar;
     @FXML
@@ -77,6 +89,7 @@ public class MenuClientesController implements Initializable {
     private Button btnEliminar;
     @FXML
     private Button btnReporte;
+    // Se utiliza un ImageView para que muestre las imagenes colocadas en la vista.
     @FXML
     private ImageView imgEditar;
     @FXML
@@ -86,11 +99,15 @@ public class MenuClientesController implements Initializable {
     @FXML
     private ImageView imgReporte;
 
+    /*
+     * Carga los datos en la vista al inicializar el controlador Clientes.
+     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         cargarDatos();
     }
 
+    // Este metodo nos permite cargar los datos a la vista hay que colocarlos de forma ordenada.
     public void cargarDatos() {
         tblClientes.setItems(getClientes());
         colCodigoC.setCellValueFactory(new PropertyValueFactory<Clientes, Integer>("codigoCliente"));
@@ -102,6 +119,7 @@ public class MenuClientesController implements Initializable {
         colCorreoC.setCellValueFactory(new PropertyValueFactory<Clientes, String>("correoCliente"));
     }
 
+    // Este metodo nos permite seleccionar los datos de la tabla clientes.
     public void seleccionarElemento() {
         txtCodigoC.setText(String.valueOf(((Clientes) tblClientes.getSelectionModel().getSelectedItem()).getCodigoCliente()));
         txtNit.setText(((Clientes) tblClientes.getSelectionModel().getSelectedItem()).getNITCliente());
@@ -112,6 +130,12 @@ public class MenuClientesController implements Initializable {
         txtCorreoC.setText(((Clientes) tblClientes.getSelectionModel().getSelectedItem()).getCorreoCliente());
     }
 
+    /* 
+    * Se utiliza un observableList para que liste los datos de la tabla clientes
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos de clientes y utilizamos una excepcion
+    * para que no crashee el programa.
+     */
     public ObservableList<Clientes> getClientes() {
         ArrayList<Clientes> lista = new ArrayList<>();
         try {
@@ -132,10 +156,15 @@ public class MenuClientesController implements Initializable {
         return listaClientes = FXCollections.observableList(lista);
     }
 
+    // Este metodo nos permite que el boton puede realizar la accion de agregar un cliente.
     public void Agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 activarControles();
+                /*
+                 * El usuario presiona el boton para agregar el cliente y le cambiara 
+                 * la animacion del boton y de las imagenes.
+                 */
                 btnAgregar.setText("Guardar");
                 btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
@@ -149,6 +178,7 @@ public class MenuClientesController implements Initializable {
                 desactivarControles();
                 cargarDatos();
                 limpiarControles();
+                // Aqui los botones regresan a su estado original
                 btnAgregar.setText("Agregar");
                 btnEliminar.setText("eliminar");
                 btnEditar.setDisable(false);
@@ -161,6 +191,7 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    // Este metodo nos permite guardar los datos al momento de agregar un nuevo cliente y que se muestre en la tabla.
     public void guardar() {
         Clientes registro = new Clientes();
         registro.setCodigoCliente(Integer.parseInt(txtCodigoC.getText()));
@@ -188,6 +219,10 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    /*
+    * Este metodo nos permite los datos de la tabla clientes y si lo elimina se muestra un mensaje
+    * y se limpia la tabla al momento de eliminar esos datos.
+     */
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -229,6 +264,7 @@ public class MenuClientesController implements Initializable {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 if (tblClientes.getSelectionModel().getSelectedItem() != null) {
+                    // Realiza la accion para actualizar los datos o cancelarlos
                     btnEditar.setText("Actualizar");
                     btnReporte.setText("Cancelar");
                     btnAgregar.setDisable(true);
@@ -244,6 +280,7 @@ public class MenuClientesController implements Initializable {
 
                 break;
             case ACTUALIZAR:
+                // Si se realiza la accion los actualiza o no los botones regresaran a su estado original.
                 actualizar();
                 btnEditar.setText("Editar");
                 btnReporte.setText("Reporte");
@@ -259,6 +296,7 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    // Actualiza los datos de la tabla Clientes y se utiliza un procedimiento almacenado.
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_actualizarClientes(?, ?, ?, ?, ?, ?, ?)}");
@@ -282,6 +320,7 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.
     public void reportes() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -298,6 +337,7 @@ public class MenuClientesController implements Initializable {
         }
     }
 
+    // Este metodo lo que hace es desabilitar los txt donde ingresan los datos.
     public void desactivarControles() {
         txtCodigoC.setEditable(false);
         txtNombreC.setEditable(false);
@@ -308,6 +348,7 @@ public class MenuClientesController implements Initializable {
         txtCorreoC.setEditable(false);
     }
 
+    // Este metodo nos permite habilitar los datos para ingresarlos a la tabla.
     public void activarControles() {
         txtCodigoC.setEditable(true);
         txtNombreC.setEditable(true);
@@ -318,6 +359,7 @@ public class MenuClientesController implements Initializable {
         txtCorreoC.setEditable(true);
     }
 
+    // Este metodo nos permite limpiar los datos que ingresamos. 
     public void limpiarControles() {
         txtCodigoC.clear();
         txtNombreC.clear();
@@ -328,18 +370,29 @@ public class MenuClientesController implements Initializable {
         txtCorreoC.clear();
     }
 
+    // Referencia a la clase Main donde establece al escenario principal.
     public void setEscenarioPrincipal(Main escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    // Este metodo nos permite realizar la accion en el boton regresar del controlador y lo retorna.
     public Button getBtnRegresar() {
         return btnRegresar;
     }
 
+    /*
+     * Es un metodo que coloca un nuevo boton que es BTNREGRESAR y es un objeto
+     * que se le asignara al atributo regresar.
+     */
     public void setBtnRegresar(Button btnRegresar) {
         this.btnRegresar = btnRegresar;
     }
 
+    /*
+     * Este metodo maneja la interaccion del boton regresar y si inyecta en la vista
+     * y verifica si fue hecha la accion que fue generado por el botón
+     * regresar y que vuelva al menu principal.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnRegresar) {

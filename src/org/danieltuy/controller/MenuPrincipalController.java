@@ -20,7 +20,7 @@ public class MenuPrincipalController implements Initializable {
     /*
      *Elementos del MenuPrincipal con sus las variables de cada boton que son
      *En el archivo FXML
-    */ 
+     */
     @FXML
     MenuItem btnMenuClientes, btnMenuProgramador, btnMenuTipoProducto, btnMenuProveedores,
             btnMenuCargoEmpleado, btnMenuCompras, btnMenuProductos, btnMenuTelefonoProveedor,

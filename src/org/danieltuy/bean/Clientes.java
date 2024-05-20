@@ -90,12 +90,10 @@ public class Clientes {
         this.correoCliente = correoCliente;
     }
 
-    // Se hace un to String para que nos muestre los datos al momento de listar el comboBox
+    // Se hace un to String para que nos muestre los datos al momento de listar el comboBox de Clientes
     @Override
     public String toString() {
-        return getCodigoCliente() +  "  ";
+        return getCodigoCliente() + "  ";
     }
-    
-    
 
 }

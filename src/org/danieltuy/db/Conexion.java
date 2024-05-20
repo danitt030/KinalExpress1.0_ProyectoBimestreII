@@ -14,7 +14,7 @@ public class Conexion {
     private Connection conexion;
     // Instancea a la conexion una sola vez
     private static Conexion instancia;
-    
+
     // Esto es un constructor que es donde se hace la conexión a la base de datos
     public Conexion() {
         try {
@@ -32,8 +32,7 @@ public class Conexion {
             e.printStackTrace();
         }
     }
-    
-    
+
     /* 
      *Se creo un metodo estatico que es la instancia unica de nuestra clase conexion
      *Esto hace que cuando la instancia no este creada, esto va hacer que cree una nueva instancia
@@ -45,8 +44,7 @@ public class Conexion {
         }
         return instancia;
     }
-    
-    
+
     // este metodo get nos permite conectarnos a la base de datos.
     public Connection getConexion() {
         return conexion;

@@ -30,17 +30,23 @@ import org.danieltuy.system.Main;
  */
 public class MenuTelefonoProveedorController implements Initializable {
 
+    // Se importa la clase Main para que podamos realizar las acciones.
     private Main escenarioPrincipal;
 
+    // Se utilizan enumeradores ya que se puede utilizar como metodos.
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
+    // Se utiliza un ObservableList para llamar a la clase TelefonoProveedor.
     private ObservableList<TelefonoProveedor> listaTelefonoProveedor;
+    // Se utiliza un ObservableList para llamar a la clase Proveedores.
     private ObservableList<Proveedores> listaProveedores;
 
+    // Colocamos la variable btnRegresar para que podamos regresar al menu.
     @FXML
     private Button btnRegresar;
+    // Utilizamos un textField para que el usuario ingrese los datos.
     @FXML
     private TextField txtCodigoTelProve;
     @FXML
@@ -49,10 +55,16 @@ public class MenuTelefonoProveedorController implements Initializable {
     private TextField txtNumSecunProve;
     @FXML
     private TextField txtObsProve;
+    // Utilizamos un comboBox para poder listar y agregar los datos de las clases
     @FXML
     private ComboBox cmbCodProvProve;
+    // Un table view para que se muestren los datos de la tabla TelefonoProveedor.    
     @FXML
     private TableView tblTelefonoProveedor;
+    /* 
+     * Un table column para que muestre los datos, siempre hay que colocarlos ordenados
+     * para que no se nos dificulte colocarlos en cada metodo.
+     */
     @FXML
     private TableColumn colCodigoTelProve;
     @FXML
@@ -63,6 +75,7 @@ public class MenuTelefonoProveedorController implements Initializable {
     private TableColumn colObsProve;
     @FXML
     private TableColumn colCodProvProve;
+    // Utilizamos botones para que el usuario pueda realiza accion con cada uno.
     @FXML
     private Button btnEditar;
     @FXML
@@ -71,6 +84,7 @@ public class MenuTelefonoProveedorController implements Initializable {
     private Button btnEliminar;
     @FXML
     private Button btnReporte;
+    // Se utiliza un ImageView para que muestre las imagenes colocadas en la vista
     @FXML
     private ImageView imgEditar;
     @FXML
@@ -80,12 +94,16 @@ public class MenuTelefonoProveedorController implements Initializable {
     @FXML
     private ImageView imgReporte;
 
+    /*
+    * Carga los datos en la vista al inicializar el controlador TelefonoProveedor.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
         cmbCodProvProve.setItems(getProveedores());
     }
 
+    // Este metodo nos permite cargar los datos a la vista hay que colocarlos de forma ordenada.
     public void cargarDatos() {
         tblTelefonoProveedor.setItems(getTelefonoProveedor());
         colCodigoTelProve.setCellValueFactory(new PropertyValueFactory<TelefonoProveedor, Integer>("codigoTelefonoProveedor"));
@@ -96,6 +114,7 @@ public class MenuTelefonoProveedorController implements Initializable {
 
     }
 
+    // Este metodo nos permite seleccionar los datos de la tabla TelefonoProveedor.
     public void seleccionarElementos() {
         txtCodigoTelProve.setText(String.valueOf(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getCodigoTelefonoProveedor()));
         txtNumPrinProve.setText(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getNumeroPrincipal());
@@ -104,6 +123,10 @@ public class MenuTelefonoProveedorController implements Initializable {
 
     }
 
+    /*
+    * Nos permite buscar un Proveedor por el codigo Proveedor del Proveedor y va
+    * retornar el proveedor que se encontro y si no se encontro sera nulo.
+     */
     public Proveedores buscarProveedores(int codigoProveedor) {
         Proveedores resultado = null;
         try {
@@ -126,6 +149,12 @@ public class MenuTelefonoProveedorController implements Initializable {
         return resultado;
     }
 
+    /* 
+    * Se utiliza un observableList para que liste los datos de la tabla TelefonoProveedor
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos del TelefonoProveedor y utilizamos una excepcion
+    * para que no crashee el programa.
+     */
     public ObservableList<TelefonoProveedor> getTelefonoProveedor() {
         ArrayList<TelefonoProveedor> lista = new ArrayList<TelefonoProveedor>();
         try {
@@ -146,6 +175,12 @@ public class MenuTelefonoProveedorController implements Initializable {
 
     }
 
+    /* 
+    * Se utiliza un observableList para que liste los datos de la tabla Proveedores
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos de Proveedores y utilizamos una excepcion
+    * para que no crashee el programa.
+     */
     public ObservableList<Proveedores> getProveedores() {
         ArrayList<Proveedores> lista = new ArrayList<>();
         try {
@@ -167,10 +202,15 @@ public class MenuTelefonoProveedorController implements Initializable {
         return listaProveedores = FXCollections.observableList(lista);
     }
 
+    // Este metodo nos permite que el boton puede realizar la accion de agregar el telefonoProveedor.
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 activarControles();
+                /*
+                 * El usuario presiona el boton para agregar el telefonoProveedor y le cambiara 
+                 * la animacion del boton y de las imagenes.
+                 */
                 btnAgregar.setText("Guardar");
                 btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
@@ -184,6 +224,7 @@ public class MenuTelefonoProveedorController implements Initializable {
                 desactivarControles();
                 cargarDatos();
                 limpiarControles();
+                // Aqui los botones regresan a su estado original.
                 btnAgregar.setText("Agregar");
                 btnEliminar.setText("eliminar");
                 btnEditar.setDisable(false);
@@ -220,6 +261,10 @@ public class MenuTelefonoProveedorController implements Initializable {
 
     }
 
+    /*
+    * Este metodo nos permite los datos de la tabla TelefonoProveedor y si lo elimina se muestra un mensaje
+    * y se limpia la tabla al momento de eliminar esos datos.
+     */
     public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -255,10 +300,12 @@ public class MenuTelefonoProveedorController implements Initializable {
         }
     }
 
+    // editar lleva el mismo concepto que agregar y eliminar.
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 if (tblTelefonoProveedor.getSelectionModel().getSelectedItem() != null) {
+                    // Realiza la accion para actualizar los datos o cancelarlos.
                     btnEditar.setText("Actualizar");
                     btnReporte.setText("Cancelar");
                     btnAgregar.setDisable(true);
@@ -274,6 +321,7 @@ public class MenuTelefonoProveedorController implements Initializable {
                 }
                 break;
             case ACTUALIZAR:
+                // Si se realiza la accion los actualiza o no los botones regresaran a su estado original.
                 actualizar();
                 btnEditar.setText("Editar");
                 btnReporte.setText("Reporte");
@@ -289,6 +337,7 @@ public class MenuTelefonoProveedorController implements Initializable {
         }
     }
 
+    // Actualiza los datos de la tabla TelefonoProveedor, Proveedores y se utiliza un procedimiento almacenado.     
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_actualizarTelefonoProveedor(?, ?, ?, ?, ?)}");
@@ -310,6 +359,7 @@ public class MenuTelefonoProveedorController implements Initializable {
         }
     }
 
+    // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.   
     public void reportes() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -326,6 +376,9 @@ public class MenuTelefonoProveedorController implements Initializable {
         }
     }
 
+    /*
+    *Este metodo lo que hace es desabilitar los txt y los combobox donde ingresan los datos.
+     */
     public void desactivarControles() {
         txtCodigoTelProve.setEditable(false);
         txtNumPrinProve.setEditable(false);
@@ -335,6 +388,7 @@ public class MenuTelefonoProveedorController implements Initializable {
 
     }
 
+    // Este metodo lo que hace es habilitar los txt y los combobox donde ingresan los datos.       
     public void activarControles() {
         txtCodigoTelProve.setEditable(true);
         txtNumPrinProve.setEditable(true);
@@ -343,6 +397,10 @@ public class MenuTelefonoProveedorController implements Initializable {
         cmbCodProvProve.setDisable(false);
     }
 
+    /*
+     *Este metodo nos permite limpiar los datos que ingresamos, la seleccion de
+     * la tabla y los comboBox.
+     */
     public void limpiarControles() {
         txtCodigoTelProve.clear();
         txtNumPrinProve.clear();
@@ -352,18 +410,29 @@ public class MenuTelefonoProveedorController implements Initializable {
         cmbCodProvProve.getSelectionModel().getSelectedItem();
     }
 
+    // Referencia a la clase Main donde establece al escenario principal.
     public void setEscenarioPrincipal(Main escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    // Este metodo nos permite realizar la accion en el boton regresar del controlador y lo retorna.
     public Button getBtnRegresar() {
         return btnRegresar;
     }
 
+    /*
+     * Es un metodo que coloca un nuevo boton que es BTNREGRESAR y es un objeto
+     * que se le asignara al atributo regresar.
+     */
     public void setBtnRegresar(Button btnRegresar) {
         this.btnRegresar = btnRegresar;
     }
 
+    /*
+     * Este metodo maneja la interaccion del boton regresar y si inyecta en la vista
+     * y verifica si fue hecha la accion que fue generado por el botón
+     * regresar y que vuelva al menu principal.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnRegresar) {

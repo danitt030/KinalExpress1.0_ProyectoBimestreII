@@ -31,30 +31,43 @@ import org.danieltuy.system.Main;
  */
 public class MenuDetalleFacturaController implements Initializable {
 
+    // Se importa la clase Main para que podamos realizar las acciones.
     private Main escenarioPrincipal;
 
+    // Se utilizan enumeradores ya que se puede utilizar como metodos.
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
+    // Se utiliza un ObservableList para llamar a la clase DetalleFactura.
     private ObservableList<DetalleFactura> listaDetalleFactura;
+    // Se utiliza un ObservableList para llamar a la clase Factura.
     private ObservableList<Factura> listaFactura;
+    // Se utiliza un ObservableList para llamar a la clase Productos.
     private ObservableList<Productos> listaProductos;
 
+    // Colocamos la variable btnRegresar para que podamos regresar al menu.
     @FXML
     private Button btnRegresar;
+    // Utilizamos un textField para que el usuario ingrese los datos.
     @FXML
     private TextField txtCodDetaFac;
     @FXML
     private TextField txtPreUniDetaFac;
     @FXML
     private TextField txtCanDetaFac;
+    // Utilizamos un comboBox para poder listar y agregar los datos de las clases.
     @FXML
     private ComboBox cmbNumFacDetaFac;
     @FXML
     private ComboBox cmbCodProDetaFac;
+    // Un table view para que se muestren los datos de la tabla DetalleFactura.    
     @FXML
     private TableView tblDetalleFactura;
+    /* 
+     * Un table column para que muestre los datos, siempre hay que colocarlos ordenados
+     * para que no se nos dificulte colocarlos en cada metodo.
+     */
     @FXML
     private TableColumn colCodDetaFac;
     @FXML
@@ -65,6 +78,7 @@ public class MenuDetalleFacturaController implements Initializable {
     private TableColumn colNumFacDetaFac;
     @FXML
     private TableColumn colCodProDetaFac;
+    // Utilizamos botones para que el usuario pueda realiza accion con cada uno.
     @FXML
     private Button btnEditar;
     @FXML
@@ -73,6 +87,7 @@ public class MenuDetalleFacturaController implements Initializable {
     private Button btnEliminar;
     @FXML
     private Button btnReporte;
+    // Se utiliza un ImageView para que muestre las imagenes colocadas en la vista
     @FXML
     private ImageView imgEditar;
     @FXML
@@ -82,6 +97,9 @@ public class MenuDetalleFacturaController implements Initializable {
     @FXML
     private ImageView imgReporte;
 
+    /*
+    * Carga los datos en la vista al inicializar el controlador DetalleFactura.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
@@ -89,6 +107,7 @@ public class MenuDetalleFacturaController implements Initializable {
         cmbCodProDetaFac.setItems(getProducto());
     }
 
+    // Este metodo nos permite cargar los datos a la vista hay que colocarlos de forma ordenada.
     public void cargarDatos() {
         tblDetalleFactura.setItems(getDetalleFactura());
         colCodDetaFac.setCellValueFactory(new PropertyValueFactory<Factura, Integer>("codigoDetalleFactura"));
@@ -99,6 +118,7 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 
+    // Este metodo nos permite seleccionar los datos de la tabla DetalleFactura.
     public void seleccionarElementos() {
         txtCodDetaFac.setText(String.valueOf(((DetalleFactura) tblDetalleFactura.getSelectionModel().getSelectedItem()).getCodigoDetalleFactura()));
         txtPreUniDetaFac.setText(String.valueOf(((DetalleFactura) tblDetalleFactura.getSelectionModel().getSelectedItem()).getPrecioUnitario()));
@@ -106,6 +126,10 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 
+    /*
+    * Nos permite buscar un producto por el codigoProducto del producto y va
+    * retornar Productos que se encontro y si no se encontro sera nulo.
+     */
     public Productos buscarProductos(String codigoProducto) {
         Productos resultado = null;
         try {
@@ -128,6 +152,12 @@ public class MenuDetalleFacturaController implements Initializable {
         return resultado;
     }
 
+    /* 
+    * Se utiliza un observableList para que liste los datos de la tabla DetalleFactura
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos del DetalleFactura y utilizamos una excepcion
+    * para que no crashee el programa.
+     */
     public ObservableList<DetalleFactura> getDetalleFactura() {
         ArrayList<DetalleFactura> lista = new ArrayList<DetalleFactura>();
         try {
@@ -148,6 +178,12 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 
+    /* 
+    * Se utiliza un observableList para que liste los datos de la tabla Factura
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos de Factura y utilizamos una excepcion
+    * para que no crashee el programa.
+     */
     public ObservableList<Factura> getFactura() {
         ArrayList<Factura> lista = new ArrayList<Factura>();
         try {
@@ -169,6 +205,12 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 
+    /* 
+    * Se utiliza un observableList para que liste los datos de la tabla Productos
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos de los Productos y utilizamos una excepcion
+    * para que no crashee el programa.
+     */
     public ObservableList<Productos> getProducto() {
         ArrayList<Productos> lista = new ArrayList<Productos>();
         try {
@@ -192,10 +234,15 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 
+    // Este metodo nos permite que el boton puede realizar la accion de agregar el Detalle de la Factura.
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 activarControles();
+                /*
+                 * El usuario presiona el boton para agregar el detalle de la factura y le cambiara 
+                 * la animacion del boton y de las imagenes.
+                 */
                 btnAgregar.setText("Guardar");
                 btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
@@ -209,6 +256,7 @@ public class MenuDetalleFacturaController implements Initializable {
                 desactivarControles();
                 cargarDatos();
                 limpiarControles();
+                // Aqui los botones regresan a su estado original.
                 btnAgregar.setText("Agregar");
                 btnEliminar.setText("eliminar");
                 btnEditar.setDisable(false);
@@ -245,7 +293,11 @@ public class MenuDetalleFacturaController implements Initializable {
 
     }
 
- public void eliminar() {
+    /*
+    * Este metodo nos permite los datos de la tabla DetalleFactura y si lo elimina se muestra un mensaje
+    * y se limpia la tabla al momento de eliminar esos datos.
+     */
+    public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
                 desactivarControles();
@@ -261,7 +313,7 @@ public class MenuDetalleFacturaController implements Initializable {
             default:
                 if (tblDetalleFactura.getSelectionModel().getSelectedItem() != null) {
                     int respuesta = JOptionPane.showConfirmDialog(null, "Confirmar la eliminacion del registro",
-                            "Eliminar la compra", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
+                            "Eliminar el detalle de la factura", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE);
                     if (respuesta == JOptionPane.YES_NO_OPTION) {
                         try {
                             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_eliminarDetalleFactura(?)}");
@@ -274,17 +326,19 @@ public class MenuDetalleFacturaController implements Initializable {
                         }
                     }
                 } else {
-                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar una compra para eliminar");
+                    JOptionPane.showConfirmDialog(null, "Debe de seleccionar detalleFactura para eliminar");
                 }
 
         }
 
     }
 
+    // editar lleva el mismo concepto que agregar y eliminar.
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 if (tblDetalleFactura.getSelectionModel().getSelectedItem() != null) {
+                    // Realiza la accion para actualizar los datos o cancelarlos.
                     btnEditar.setText("Actualizar");
                     btnReporte.setText("Cancelar");
                     btnAgregar.setDisable(true);
@@ -300,6 +354,7 @@ public class MenuDetalleFacturaController implements Initializable {
                 }
                 break;
             case ACTUALIZAR:
+                // Si se realiza la accion los actualiza o no los botones regresaran a su estado original.
                 actualizar();
                 btnEditar.setText("Editar");
                 btnReporte.setText("Reporte");
@@ -315,6 +370,7 @@ public class MenuDetalleFacturaController implements Initializable {
         }
     }
 
+    // Actualiza los datos de la tabla DetalleFactura, Factura y Productos y se utiliza un procedimiento almacenado. 
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_actualizarDetalleFactura(?, ?, ?, ?, ?)}");
@@ -336,6 +392,7 @@ public class MenuDetalleFacturaController implements Initializable {
         }
     }
 
+    // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.
     public void reportes() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -352,6 +409,9 @@ public class MenuDetalleFacturaController implements Initializable {
         }
     }
 
+    /*
+    *Este metodo lo que hace es desabilitar los txt y los combobox donde ingresan los datos.
+     */
     public void desactivarControles() {
         txtCodDetaFac.setEditable(false);
         txtPreUniDetaFac.setEditable(false);
@@ -360,6 +420,7 @@ public class MenuDetalleFacturaController implements Initializable {
         cmbCodProDetaFac.setDisable(true);
     }
 
+    // Este metodo lo que hace es habilitar los txt y los combobox donde ingresan los datos. 
     public void activarControles() {
         txtCodDetaFac.setEditable(true);
         txtPreUniDetaFac.setEditable(true);
@@ -368,6 +429,10 @@ public class MenuDetalleFacturaController implements Initializable {
         cmbCodProDetaFac.setDisable(false);
     }
 
+    /*
+     *Este metodo nos permite limpiar los datos que ingresamos, la seleccion de
+     * la tabla y los comboBox.
+     */
     public void limpiarControles() {
         txtCodDetaFac.clear();
         txtPreUniDetaFac.clear();
@@ -377,18 +442,29 @@ public class MenuDetalleFacturaController implements Initializable {
         cmbCodProDetaFac.getSelectionModel().getSelectedItem();
     }
 
+    // Referencia a la clase Main donde establece al escenario principal.
     public void setEscenarioPrincipal(Main escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
     }
 
+    // Este metodo nos permite realizar la accion en el boton regresar del controlador y lo retorna.    
     public Button getBtnRegresar() {
         return btnRegresar;
     }
 
+    /*
+     * Es un metodo que coloca un nuevo boton que es BTNREGRESAR y es un objeto
+     * que se le asignara al atributo regresar.
+     */
     public void setBtnRegresar(Button btnRegresar) {
         this.btnRegresar = btnRegresar;
     }
 
+    /*
+     * Este metodo maneja la interaccion del boton regresar y si inyecta en la vista
+     * y verifica si fue hecha la accion que fue generado por el botón
+     * regresar y que vuelva al menu principal.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnRegresar) {

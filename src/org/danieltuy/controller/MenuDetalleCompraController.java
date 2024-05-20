@@ -31,30 +31,43 @@ import org.danieltuy.system.Main;
  */
 public class MenuDetalleCompraController implements Initializable {
 
+    // Se importa la clase Main para que podamos realizar las acciones.
     private Main escenarioPrincipal;
 
+    // Se utilizan enumeradores ya que se puede utilizar como metodos.
     private enum operaciones {
         AGREGAR, ELIMINAR, EDITAR, ACTUALIZAR, CANCELAR, NINGUNO
     }
     private operaciones tipoDeOperaciones = operaciones.NINGUNO;
+    // Se utiliza un ObservableList para llamar a la clase DetalleCompra.
     private ObservableList<DetalleCompra> listaDetalleCompra;
+    // Se utiliza un ObservableList para llamar a la clase Productos.
     private ObservableList<Productos> listaProductos;
+    // Se utiliza un ObservableList para llamar a la clase Compras.
     private ObservableList<Compras> listaCompras;
-
+    
+    // Colocamos la variable btnRegresar para que podamos regresar al menu.
     @FXML
     private Button btnRegresar;
+    // Utilizamos un textField para que el usuario ingrese los datos.
     @FXML
     private TextField txtCodDetaComp;
     @FXML
     private TextField txtCosUniDetaComp;
     @FXML
     private TextField txtCanDetaComp;
+    // Utilizamos un comboBox para poder listar y agregar los datos de las clases
     @FXML
     private ComboBox cmbCodProDetaComp;
     @FXML
     private ComboBox cmbNumDocDetaComp;
+    // Un table view para que se muestren los datos de la tabla DetalleCompra.    
     @FXML
     private TableView tblDetalleCompra;
+    /* 
+     * Un table column para que muestre los datos, siempre hay que colocarlos ordenados
+     * para que no se nos dificulte colocarlos en cada metodo.
+     */
     @FXML
     private TableColumn colCodDetaComp;
     @FXML
@@ -65,6 +78,7 @@ public class MenuDetalleCompraController implements Initializable {
     private TableColumn colCodProDetaComp;
     @FXML
     private TableColumn colNumDocDetaComp;
+    // Utilizamos botones para que el usuario pueda realiza accion con cada uno.
     @FXML
     private Button btnEditar;
     @FXML
@@ -73,6 +87,7 @@ public class MenuDetalleCompraController implements Initializable {
     private Button btnEliminar;
     @FXML
     private Button btnReporte;
+    // Se utiliza un ImageView para que muestre las imagenes colocadas en la vista
     @FXML
     private ImageView imgEditar;
     @FXML
@@ -82,6 +97,9 @@ public class MenuDetalleCompraController implements Initializable {
     @FXML
     private ImageView imgReporte;
 
+   /*
+    * Carga los datos en la vista al inicializar el controlador DetalleCompra.
+    */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cargarDatos();
@@ -89,6 +107,7 @@ public class MenuDetalleCompraController implements Initializable {
         cmbNumDocDetaComp.setItems(getCompras());
     }
 
+    // Este metodo nos permite cargar los datos a la vista hay que colocarlos de forma ordenada.
     public void cargarDatos() {
         tblDetalleCompra.setItems(getDetalleCompra());
         colCodDetaComp.setCellValueFactory(new PropertyValueFactory<DetalleCompra, Integer>("codigoDetalleCompra"));
@@ -99,6 +118,7 @@ public class MenuDetalleCompraController implements Initializable {
 
     }
 
+    // Este metodo nos permite seleccionar los datos de la tabla DetalleCompra.
     public void seleccionarElementos() {
         txtCodDetaComp.setText(String.valueOf(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getCodigoDetalleCompra()));
         txtCosUniDetaComp.setText(String.valueOf(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getCostoUnitario()));
@@ -106,6 +126,10 @@ public class MenuDetalleCompraController implements Initializable {
 
     }
 
+   /*
+    * Nos permite buscar una compra por el numero de documento de la compra y va
+    * retorna la compra que se encontro y si no se encontro sera nulo.
+    */
     public Compras buscarCompras(int numeroDocumento) {
         Compras resultado = null;
         try {
@@ -124,6 +148,12 @@ public class MenuDetalleCompraController implements Initializable {
         return resultado;
     }
 
+   /* 
+    * Se utiliza un observableList para que liste los datos de la tabla DetalleCompra
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos del DetalleCompra y utilizamos una excepcion
+    * para que no crashee el programa.
+    */
     public ObservableList<DetalleCompra> getDetalleCompra() {
         ArrayList<DetalleCompra> lista = new ArrayList<DetalleCompra>();
         try {
@@ -144,6 +174,12 @@ public class MenuDetalleCompraController implements Initializable {
 
     }
 
+   /* 
+    * Se utiliza un observableList para que liste los datos de la tabla Productos
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos de Productos y utilizamos una excepcion
+    * para que no crashee el programa.
+    */
     public ObservableList<Productos> getProducto() {
         ArrayList<Productos> lista = new ArrayList<Productos>();
         try {
@@ -167,7 +203,13 @@ public class MenuDetalleCompraController implements Initializable {
 
     }
 
-        public ObservableList<Compras> getCompras() {
+   /* 
+    * Se utiliza un observableList para que liste los datos de la tabla Compras
+    * y utilizamos un arrayList porque no sabemos cuanto son los atributos que listaran
+    * utilizamos un get para que recibir los datos de Compras y utilizamos una excepcion
+    * para que no crashee el programa.
+    */    
+    public ObservableList<Compras> getCompras() {
         ArrayList<Compras> lista = new ArrayList<>();
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_listarCompras()}");
@@ -184,10 +226,15 @@ public class MenuDetalleCompraController implements Initializable {
         return listaCompras = FXCollections.observableList(lista);
     }
 
+    // Este metodo nos permite que el boton puede realizar la accion de agregar el Detalle de la compra.
     public void agregar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 activarControles();
+                /*
+                 * El usuario presiona el boton para agregar el detalle de la compra y le cambiara 
+                 * la animacion del boton y de las imagenes.
+                 */
                 btnAgregar.setText("Guardar");
                 btnEliminar.setText("Cancelar");
                 btnEditar.setDisable(true);
@@ -201,6 +248,7 @@ public class MenuDetalleCompraController implements Initializable {
                 desactivarControles();
                 cargarDatos();
                 limpiarControles();
+                // Aqui los botones regresan a su estado original.
                 btnAgregar.setText("Agregar");
                 btnEliminar.setText("eliminar");
                 btnEditar.setDisable(false);
@@ -237,7 +285,11 @@ public class MenuDetalleCompraController implements Initializable {
 
     }
 
- public void eliminar() {
+   /*
+    * Este metodo nos permite los datos de la tabla DetalleCompra y si lo elimina se muestra un mensaje
+    * y se limpia la tabla al momento de eliminar esos datos.
+    */
+    public void eliminar() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
                 desactivarControles();
@@ -273,10 +325,12 @@ public class MenuDetalleCompraController implements Initializable {
 
     }
 
+    // editar lleva el mismo concepto que agregar y eliminar.
     public void editar() {
         switch (tipoDeOperaciones) {
             case NINGUNO:
                 if (tblDetalleCompra.getSelectionModel().getSelectedItem() != null) {
+                    // Realiza la accion para actualizar los datos o cancelarlos.
                     btnEditar.setText("Actualizar");
                     btnReporte.setText("Cancelar");
                     btnAgregar.setDisable(true);
@@ -292,6 +346,7 @@ public class MenuDetalleCompraController implements Initializable {
                 }
                 break;
             case ACTUALIZAR:
+                // Si se realiza la accion los actualiza o no los botones regresaran a su estado original.
                 actualizar();
                 btnEditar.setText("Editar");
                 btnReporte.setText("Reporte");
@@ -307,6 +362,7 @@ public class MenuDetalleCompraController implements Initializable {
         }
     }
 
+    // Actualiza los datos de la tabla DetalleCompra, Productos y Compras y se utiliza un procedimiento almacenado. 
     public void actualizar() {
         try {
             PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_actualizarDetalleCompra(?, ?, ?, ?, ?)}");
@@ -328,6 +384,7 @@ public class MenuDetalleCompraController implements Initializable {
         }
     }
 
+    // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.
     public void reportes() {
         switch (tipoDeOperaciones) {
             case ACTUALIZAR:
@@ -344,6 +401,9 @@ public class MenuDetalleCompraController implements Initializable {
         }
     }
 
+   /*
+    *Este metodo lo que hace es desabilitar los txt y los combobox donde ingresan los datos.
+    */
     public void desactivarControles() {
         txtCodDetaComp.setEditable(false);
         txtCosUniDetaComp.setEditable(false);
@@ -352,6 +412,7 @@ public class MenuDetalleCompraController implements Initializable {
         cmbNumDocDetaComp.setDisable(true);
     }
 
+    // Este metodo lo que hace es habilitar los txt y los combobox donde ingresan los datos.       
     public void activarControles() {
         txtCodDetaComp.setEditable(true);
         txtCosUniDetaComp.setEditable(true);
@@ -360,6 +421,10 @@ public class MenuDetalleCompraController implements Initializable {
         cmbNumDocDetaComp.setDisable(false);
     }
 
+    /*
+     *Este metodo nos permite limpiar los datos que ingresamos, la seleccion de
+     * la tabla y los comboBox.
+     */
     public void limpiarControles() {
         txtCodDetaComp.clear();
         txtCosUniDetaComp.clear();
@@ -368,19 +433,30 @@ public class MenuDetalleCompraController implements Initializable {
         cmbCodProDetaComp.getSelectionModel().getSelectedItem();
         cmbNumDocDetaComp.getSelectionModel().getSelectedItem();
     }
-
+    
+    // Referencia a la clase Main donde establece al escenario principal.
     public void setEscenarioPrincipal(Main escenarioPrincipal) {
         this.escenarioPrincipal = escenarioPrincipal;
     }
-
+    
+    // Este metodo nos permite realizar la accion en el boton regresar del controlador y lo retorna.
     public Button getBtnRegresar() {
         return btnRegresar;
     }
 
+    /*
+     * Es un metodo que coloca un nuevo boton que es BTNREGRESAR y es un objeto
+     * que se le asignara al atributo regresar.
+     */    
     public void setBtnRegresar(Button btnRegresar) {
         this.btnRegresar = btnRegresar;
     }
-
+    
+    /*
+     * Este metodo maneja la interaccion del boton regresar y si inyecta en la vista
+     * y verifica si fue hecha la accion que fue generado por el botón
+     * regresar y que vuelva al menu principal.
+     */
     @FXML
     public void handleButtonAction(ActionEvent event) {
         if (event.getSource() == btnRegresar) {

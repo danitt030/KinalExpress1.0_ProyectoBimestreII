@@ -20,7 +20,7 @@ public class TelefonoProveedor {
     public TelefonoProveedor() {
     }
 
-    // constructor lleno de la clase DetalleFactura con las variables.
+    // constructor lleno de la clase TelefonoProveedor con las variables.
     public TelefonoProveedor(int codigoTelefonoProveedor, String numeroPrincipal, String numeroSecundario, String observaciones, int codigoProveedor) {
         this.codigoTelefonoProveedor = codigoTelefonoProveedor;
         this.numeroPrincipal = numeroPrincipal;
