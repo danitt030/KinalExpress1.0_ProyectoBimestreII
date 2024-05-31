@@ -132,7 +132,7 @@ public class MenuEmpleadosController implements Initializable {
         txtSuelEmple.setText(String.valueOf(((Empleados) tblEmpleados.getSelectionModel().getSelectedItem()).getSueldo()));
         txtDireEmple.setText(((Empleados) tblEmpleados.getSelectionModel().getSelectedItem()).getDireccion());
         txtTurEmple.setText(((Empleados) tblEmpleados.getSelectionModel().getSelectedItem()).getTurno());
-
+        cmbCodCargEmple.getSelectionModel().select(buscarCargoEmpleado(((Empleados) tblEmpleados.getSelectionModel().getSelectedItem()).getCodigoCargoEmpleado()));
     }
 
     /*
@@ -142,7 +142,7 @@ public class MenuEmpleadosController implements Initializable {
     public CargoEmpleado buscarCargoEmpleado(int codigoCargoEmpleado) {
         CargoEmpleado resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarCargoEmpleado()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarCargoEmpleado(?)}");
             procedimiento.setInt(1, codigoCargoEmpleado);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -425,7 +425,7 @@ public class MenuEmpleadosController implements Initializable {
         txtDireEmple.clear();
         txtTurEmple.clear();
         tblEmpleados.getSelectionModel().getSelectedItem();
-        cmbCodCargEmple.getSelectionModel().getSelectedItem();
+        cmbCodCargEmple.setValue(null);
     }
 
     // Referencia a la clase Main donde establece al escenario principal.

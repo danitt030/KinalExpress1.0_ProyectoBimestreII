@@ -66,8 +66,7 @@ create table TelefonoProveedor
     observaciones varchar(45),
     codigoProveedor int not null,
     primary key PK_codigoTelefonoProveedor (codigoTelefonoProveedor),
-	foreign key (codigoProveedor) references Proveedores(codigoProveedor)
-
+	foreign key (codigoProveedor) references Proveedores(codigoProveedor) on delete cascade
 );
 
 -- Empleados
@@ -81,7 +80,7 @@ create table Empleados
     turno varchar(15),
     codigoCargoEmpleado int,
     primary key PK_codigoEmpleado (codigoEmpleado),
-    foreign key (codigoCargoEmpleado) references CargoEmpleado(codigoCargoEmpleado)
+    foreign key (codigoCargoEmpleado) references CargoEmpleado(codigoCargoEmpleado) on delete cascade
 );
 
 -- EmailProveedor
@@ -92,7 +91,7 @@ create table EmailProveedor
     descripcion varchar(100),
     codigoProveedor int not null,
     primary key PK_codigoEmailProveedor (codigoEmailProveedor),
-	foreign key (codigoProveedor) references Proveedores(codigoProveedor)
+	foreign key (codigoProveedor) references Proveedores(codigoProveedor) on delete cascade
 
 );
 
@@ -106,8 +105,8 @@ create table Factura
     codigoCliente int not null,
     codigoEmpleado int not null,
     primary key PK_numeroFactura (numeroFactura),
-	foreign key (codigoCliente) references Clientes(codigoCliente),
-	foreign key (codigoEmpleado) references Empleados(codigoEmpleado)
+	foreign key (codigoCliente) references Clientes(codigoCliente) on delete cascade,
+	foreign key (codigoEmpleado) references Empleados(codigoEmpleado) on delete cascade
 );
 
 -- Productos
@@ -122,8 +121,8 @@ create table Productos
     codigoTipoProducto int not null,
     codigoProveedor int not null,
     primary key PK_codigoProducto (codigoProducto),
-	foreign key (codigoTipoProducto) references TipoProducto(codigoTipoProducto),
-	foreign key (codigoProveedor) references Proveedores(codigoProveedor) 
+	foreign key (codigoTipoProducto) references TipoProducto(codigoTipoProducto) on delete cascade,
+	foreign key (codigoProveedor) references Proveedores(codigoProveedor) on delete cascade
 );
 
 -- DetalleFactura
@@ -135,8 +134,8 @@ create table DetalleFactura
     numeroFactura int not null,
     codigoProducto varchar(15),
     primary key PK_codigoDetalleFactura (codigoDetalleFactura),
-	foreign key (numeroFactura) references Factura(numeroFactura),
-    foreign key (codigoProducto) references Productos(codigoProducto)
+	foreign key (numeroFactura) references Factura(numeroFactura) on delete cascade,
+    foreign key (codigoProducto) references Productos(codigoProducto) on delete cascade
 );
 
 -- DetalleCompra
@@ -148,8 +147,8 @@ create table DetalleCompra
     codigoProducto varchar(15),
     numeroDocumento int not null,
     primary key PK_codigoDetalleCompra (codigoDetalleCompra),
-	foreign key (codigoProducto) references Productos(codigoProducto),
-    foreign key (numeroDocumento) references Compras(numeroDocumento)
+	foreign key (codigoProducto) references Productos(codigoProducto) on delete cascade,
+    foreign key (numeroDocumento) references Compras(numeroDocumento) on delete cascade
 );
 
  
@@ -190,7 +189,7 @@ call sp_listarClientes();
 delimiter $$
 	create procedure sp_buscarClientes(in codClie int)
     begin
-	select Clientes.NITCliente, Clientes.nombresCliente, Clientes.apellidosCliente, Clientes.direccionCliente, 
+	select Clientes.codigoCliente, Clientes.NITCliente, Clientes.nombresCliente, Clientes.apellidosCliente, Clientes.direccionCliente, 
     Clientes.telefonoCliente, Clientes.correoCliente from Clientes where Clientes.codigoCliente = codClie;
 	end$$
 delimiter ;
@@ -230,7 +229,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarCliente();
+-- call sp_eliminarCliente();
 
 -- Entidad tipoProducto procedimientos almacenados --
 
@@ -266,7 +265,7 @@ call sp_listarTipoProducto();
 delimiter $$
 	create procedure sp_buscarTipoProducto(in codTiPro int)
     begin
-	select TipoProducto.descripcion from TipoProducto where TipoProducto.codigoTipoProducto = codTiPro;
+	select TipoProducto.codigoTipoProducto, TipoProducto.descripcion from TipoProducto where TipoProducto.codigoTipoProducto = codTiPro;
 	end$$
 delimiter ;
 
@@ -300,7 +299,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarTipoProducto();
+-- call sp_eliminarTipoProducto();
 
 -- Entidad Compras procedimientos almacenados --
 
@@ -339,7 +338,7 @@ call sp_listarCompras();
 delimiter $$
 	create procedure sp_buscarCompras(in numDo int)
     begin
-	select Compras.fechaDocumento, Compras.descripcion, Compras.totalDocumento 
+	select Compras.numeroDocumento, Compras.fechaDocumento, Compras.descripcion, Compras.totalDocumento 
     from Compras where Compras.numeroDocumento = numDo;
 	end$$
 delimiter ;
@@ -376,7 +375,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarCompras();
+-- call sp_eliminarCompras();
 
 -- Entidad Proveedores procedimientos almacenados --
 
@@ -417,7 +416,7 @@ call sp_listarProveedores();
 delimiter $$
 	create procedure sp_buscarProveedores(in codPro int)
     begin
-	select Proveedores.NITProveedor, Proveedores.nombresProveedor,Proveedores.apellidosProveedor, 
+	select Proveedores.codigoProveedor, Proveedores.codigoProveedor ,Proveedores.NITProveedor, Proveedores.nombresProveedor,Proveedores.apellidosProveedor, 
 	Proveedores.direccionProveedor, Proveedores.razonSocial, Proveedores.contactoPrincipal, Proveedores.paginaWeb  
     from Proveedores where Proveedores.codigoProveedor = codPro;
 	end$$
@@ -461,7 +460,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarProveedores();
+-- call sp_eliminarProveedores();
 
 -- Entidad cargoEmpleado procedimientos almacenados --
 
@@ -498,7 +497,7 @@ call sp_listarCargoEmpleado();
 delimiter $$
 	create procedure sp_buscarCargoEmpleado(in codCargEmp int)
     begin
-	select cargoEmpleado.nombreCargo, cargoEmpleado.descripcionCargo from cargoEmpleado 
+	select cargoEmpleado.codigoCargoEmpleado, cargoEmpleado.nombreCargo, cargoEmpleado.descripcionCargo from cargoEmpleado 
     where cargoEmpleado.codigoCargoEmpleado = codCargEmp;
 	end$$
 delimiter ;
@@ -535,7 +534,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarCargoEmpleado();
+-- call sp_eliminarCargoEmpleado();
 
 -- Entidad TelefonoProveedor procedimientos almacenados
 
@@ -575,7 +574,7 @@ call sp_listarTelefonoProveedor();
 delimiter $$
 	create procedure sp_buscarTelefonoProveedor(in codTelPro int)
     begin
-	select TelefonoProveedor.numeroPrincipal, TelefonoProveedor.numeroSecundario,
+	select TelefonoProveedor.codigoTelefonoProveedor ,TelefonoProveedor.numeroPrincipal, TelefonoProveedor.numeroSecundario,
 		   TelefonoProveedor.observaciones, TelefonoProveedor.codigoProveedor from TelefonoProveedor 
     where TelefonoProveedor.codigoTelefonoProveedor = codTelPro;
 	end$$
@@ -615,7 +614,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarTelefonoProveedor();
+-- call sp_eliminarTelefonoProveedor();
 
 -- Entidad Empleados procedimientos almacenados
 
@@ -655,7 +654,7 @@ call sp_listarEmpleados();
 delimiter $$
 	create procedure sp_buscarEmpleados(in codEmple int)
     begin
-	select Empleados.nombresEmpleados, Empleados.apellidosEmpleados,
+	select Empleados.codigoEmpleado, Empleados.nombresEmpleados, Empleados.apellidosEmpleados,
 		   Empleados.sueldo, Empleados.direccion, Empleados.turno, Empleados.codigoCargoEmpleado from Empleados 
     where Empleados.codigoEmpleado = codEmple;
 	end$$
@@ -697,7 +696,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarEmpleados();
+-- call sp_eliminarEmpleados();
 
 -- Entidad EmailProveedor procedimientos almacenados
 
@@ -736,7 +735,7 @@ call sp_listarEmailProveedor();
 delimiter $$
 	create procedure sp_buscarEmailProveedor(in codEmPro int)
     begin
-	select EmailProveedor.emailProveedor, EmailProveedor.descripcion, EmailProveedor.codigoProveedor from EmailProveedor 
+	select EmailProveedor.codigoEmailProveedor, EmailProveedor.emailProveedor, EmailProveedor.descripcion, EmailProveedor.codigoProveedor from EmailProveedor 
     where EmailProveedor.codigoEmailProveedor = codEmPro;
 	end$$
 delimiter ;
@@ -773,7 +772,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarEmailProveedor();
+-- call sp_eliminarEmailProveedor();
 
 -- Entidad Factura procedimientos almacenados
 
@@ -813,7 +812,7 @@ call sp_listarFactura();
 delimiter $$
 	create procedure sp_buscarFactura(in numFac int)
     begin
-	select Factura.estado, Factura.totalFactura, Factura.fechaFactura,
+	select Factura.numeroFactura, Factura.estado, Factura.totalFactura, Factura.fechaFactura,
 		   Factura.codigoCliente, Factura.codigoEmpleado from Factura 
     where Factura.numeroFactura = numFac;
 	end$$
@@ -854,7 +853,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarFactura();
+-- call sp_eliminarFactura();
 
 -- Entidad Productos procedimientos almacenados
 
@@ -897,7 +896,7 @@ call sp_listarProductos();
 delimiter $$
 	create procedure sp_buscarProductos(in codPro varchar(45))
     begin
-	select Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
+	select Productos.codigoProducto, Productos.descripcionProducto, Productos.precioUnitario, Productos.precioDocena,
 		   Productos.precioMayor, Productos.existencia, Productos.codigoTipoProducto, 
 		   Productos.codigoProveedor from Productos 
     where Productos.codigoProducto = codPro;
@@ -942,7 +941,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarProductos();
+-- call sp_eliminarProductos();
 
 -- Entidad DetalleFactura procedimientos almacenados
 
@@ -983,7 +982,7 @@ call sp_listarDetalleFactura();
 delimiter $$
 	create procedure sp_buscarDetalleFactura(in codDetaFac int)
     begin
-	select DetalleFactura.precioUnitario, DetalleFactura.cantidad,
+	select DetalleFactura.codigoDetalleFactura, DetalleFactura.precioUnitario, DetalleFactura.cantidad,
 		   DetalleFactura.numeroFactura, DetalleFactura.codigoProducto from DetalleFactura 
     where DetalleFactura.codigoDetalleFactura = codDetaFac;
 	end$$
@@ -1023,7 +1022,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarDetalleFactura();
+-- call sp_eliminarDetalleFactura();
 
 -- Entidad DetalleCompra procedimientos almacenados
 
@@ -1063,7 +1062,7 @@ call sp_listarDetalleCompra();
 delimiter $$
 	create procedure sp_buscarDetalleCompra(in codDetaComp int)
     begin
-	select DetalleCompra.costoUnitario, DetalleCompra.cantidad,
+	select DetalleCompra.codigoDetalleCompra, DetalleCompra.costoUnitario, DetalleCompra.cantidad,
 		   DetalleCompra.codigoProducto, DetalleCompra.numeroDocumento from DetalleCompra 
     where DetalleCompra.codigoDetalleCompra = codDetaComp;
 	end$$
@@ -1103,4 +1102,6 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_eliminarDetalleCompra();
+-- call sp_eliminarDetalleCompra();
+
+-- Triggers

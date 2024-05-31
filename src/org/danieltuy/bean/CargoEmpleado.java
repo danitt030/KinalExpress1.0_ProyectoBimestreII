@@ -50,7 +50,7 @@ public class CargoEmpleado {
     // Se hace un to String para que nos muestre los datos al momento de listar el comboBox de la clase cargoEmpleado
     @Override
     public String toString() {
-        return getCodigoCargoEmpleado() + " " + getNombreCargo() + " " + getDescripcionCargo();
+        return getCodigoCargoEmpleado() + "  " + getNombreCargo() + "  " + getDescripcionCargo();
     }
 
 }

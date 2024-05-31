@@ -103,9 +103,9 @@ public class Proveedores {
     // Se hace un to String para que nos muestre los datos al momento de listar el comboBox de Proveedores
     @Override
     public String toString() {
-        return getCodigoProveedor() + " " + getNITProveedor() + " " + getNombresProveedor()
-                + getNombresProveedor() + " " + getApellidosProveedor() + " " + getDireccionProveedor()
-                + getRazonSocial() + " " + getContactoPrincipal() + " " + getPaginaWeb();
+        return getCodigoProveedor() + "   " + getNITProveedor() + "   " + getNombresProveedor() 
+                + "   " + getApellidosProveedor() + "   " + getDireccionProveedor() + getRazonSocial() 
+                + "   " + getContactoPrincipal() + "   " + getPaginaWeb();
     }
 
 }

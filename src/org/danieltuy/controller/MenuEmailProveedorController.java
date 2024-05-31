@@ -114,7 +114,7 @@ public class MenuEmailProveedorController implements Initializable {
         txtCodigoEmaPro.setText(String.valueOf(((EmailProveedor) tblEmailProveedor.getSelectionModel().getSelectedItem()).getCodigoEmailProveedor()));
         txtEmaPro.setText(((EmailProveedor) tblEmailProveedor.getSelectionModel().getSelectedItem()).getEmailProveedor());
         txtDescriEmaPro.setText(((EmailProveedor) tblEmailProveedor.getSelectionModel().getSelectedItem()).getDescripcion());
-
+        cmbCodProEmaPro.getSelectionModel().select(buscarProveedores(((EmailProveedor) tblEmailProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
     }
 
     /*
@@ -124,7 +124,7 @@ public class MenuEmailProveedorController implements Initializable {
     public Proveedores buscarProveedores(int codigoProveedor) {
         Proveedores resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedores()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedores(?)}");
             procedimiento.setInt(1, codigoProveedor);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -392,7 +392,7 @@ public class MenuEmailProveedorController implements Initializable {
         txtEmaPro.clear();
         txtDescriEmaPro.clear();
         tblEmailProveedor.getSelectionModel().getSelectedItem();
-        cmbCodProEmaPro.getSelectionModel().getSelectedItem();
+        cmbCodProEmaPro.setValue(null);
     }
 
     // Referencia a la clase Main donde establece al escenario principal.

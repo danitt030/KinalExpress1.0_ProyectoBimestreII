@@ -115,7 +115,7 @@ public class MenuDetalleCompraController implements Initializable {
         colCanDetaComp.setCellValueFactory(new PropertyValueFactory<DetalleCompra, Integer>("cantidad"));
         colCodProDetaComp.setCellValueFactory(new PropertyValueFactory<DetalleCompra, String>("codigoProducto"));
         colNumDocDetaComp.setCellValueFactory(new PropertyValueFactory<DetalleCompra, Integer>("numeroDocumento"));
-
+       
     }
 
     // Este metodo nos permite seleccionar los datos de la tabla DetalleCompra.
@@ -123,9 +123,36 @@ public class MenuDetalleCompraController implements Initializable {
         txtCodDetaComp.setText(String.valueOf(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getCodigoDetalleCompra()));
         txtCosUniDetaComp.setText(String.valueOf(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getCostoUnitario()));
         txtCanDetaComp.setText(String.valueOf(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getCantidad()));
-
+        cmbCodProDetaComp.getSelectionModel().select(buscarProductos(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getCodigoProducto()));
+        cmbNumDocDetaComp.getSelectionModel().select(buscarCompras(((DetalleCompra) tblDetalleCompra.getSelectionModel().getSelectedItem()).getNumeroDocumento()));
     }
 
+    /*
+    * Nos permite buscar el producto por el codigo de producto de producto y va
+    * retorna el producto que se encontro y si no se encontro sera nulo.
+    */
+    public Productos buscarProductos(String codigoProducto) {
+        Productos resultado = null;
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProductos(?)}");
+            procedimiento.setString(1, codigoProducto);
+            ResultSet registro = procedimiento.executeQuery();
+            while (registro.next()) {
+                resultado = new Productos(registro.getString("codigoProducto"),
+                        registro.getString("descripcionProducto"),
+                        registro.getDouble("precioUnitario"),
+                        registro.getDouble("precioDocena"),
+                        registro.getDouble("precioMayor"),
+                        registro.getInt("existencia"),
+                        registro.getInt("codigoTipoProducto"),
+                        registro.getInt("codigoProveedor"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+    
    /*
     * Nos permite buscar una compra por el numero de documento de la compra y va
     * retorna la compra que se encontro y si no se encontro sera nulo.
@@ -133,7 +160,7 @@ public class MenuDetalleCompraController implements Initializable {
     public Compras buscarCompras(int numeroDocumento) {
         Compras resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarCompras()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarCompras(?)}");
             procedimiento.setInt(1, numeroDocumento);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -430,8 +457,8 @@ public class MenuDetalleCompraController implements Initializable {
         txtCosUniDetaComp.clear();
         txtCanDetaComp.clear();
         tblDetalleCompra.getSelectionModel().getSelectedItem();
-        cmbCodProDetaComp.getSelectionModel().getSelectedItem();
-        cmbNumDocDetaComp.getSelectionModel().getSelectedItem();
+        cmbCodProDetaComp.setValue(null);
+        cmbNumDocDetaComp.setValue(null);
     }
     
     // Referencia a la clase Main donde establece al escenario principal.

@@ -129,7 +129,33 @@ public class MenuFacturaController implements Initializable {
         txtEstaFac.setText(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getEstado());
         txtTotalFac.setText(String.valueOf(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getTotalFactura()));
         txtFechaFac.setText(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getFechaFactura());
+        cmbCodigoClienFac.getSelectionModel().select(buscarClientes(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getCodigoCliente()));
+        cmbCodigoEmpleFac.getSelectionModel().select(buscarEmpleados(((Factura) tblFactura.getSelectionModel().getSelectedItem()).getCodigoEmpleado()));
+    }
 
+    /*
+    * Nos permite buscar los Clientes por el codigoCliente de Clientes y va
+    * retornar los Clientes que se encontro y si no se encontro sera nulo.
+     */
+    public Clientes buscarClientes(int codigoCliente) {
+        Clientes resultado = null;
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarClientes(?)}");
+            procedimiento.setInt(1, codigoCliente);
+            ResultSet registro = procedimiento.executeQuery();
+            while (registro.next()) {
+                resultado = new Clientes(registro.getInt("codigoCliente"),
+                        registro.getString("NITCliente"),
+                        registro.getString("nombresCliente"),
+                        registro.getString("apellidosCliente"),
+                        registro.getString("direccionCliente"),
+                        registro.getString("telefonoCliente"),
+                        registro.getString("correoCliente"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
     }
 
     /*
@@ -139,7 +165,7 @@ public class MenuFacturaController implements Initializable {
     public Empleados buscarEmpleados(int codigoEmpleado) {
         Empleados resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarEmpleados()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarEmpleados(?)}");
             procedimiento.setInt(1, codigoEmpleado);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -447,8 +473,8 @@ public class MenuFacturaController implements Initializable {
         txtTotalFac.clear();
         txtFechaFac.clear();
         tblFactura.getSelectionModel().getSelectedItem();
-        cmbCodigoClienFac.getSelectionModel().getSelectedItem();
-        cmbCodigoEmpleFac.getSelectionModel().getSelectedItem();
+        cmbCodigoClienFac.setValue(null);
+        cmbCodigoEmpleFac.setValue(null);
     }
 
     // Referencia a la clase Main donde establece al escenario principal.

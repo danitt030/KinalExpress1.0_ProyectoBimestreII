@@ -140,7 +140,8 @@ public class MenuProductosController implements Initializable {
         txtPrecioDPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioDocena()));
         txtPrecioMPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getPrecioMayor()));
         txtExistenciaPro.setText(String.valueOf(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getExistencia()));
-
+        cmbCodigoTipoP.getSelectionModel().select(buscarTipoProducto(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoTipoProducto()));
+        cmbCodProvPro.getSelectionModel().select(buscarProveedores(((Productos) tblProductos.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
     }
 
     /*
@@ -150,12 +151,38 @@ public class MenuProductosController implements Initializable {
     public TipoProducto buscarTipoProducto(int codigoTipoProducto) {
         TipoProducto resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarTipoProducto()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarTipoProducto(?)}");
             procedimiento.setInt(1, codigoTipoProducto);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
                 resultado = new TipoProducto(registro.getInt("codigoTipoProducto"),
                         registro.getString("descripcion"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return resultado;
+    }
+    
+    /*
+    * Nos permite buscar los Proveedores por el codigoProveedor de Proveedores y va
+    * retornar el Proveedores que se encontro y si no se encontro sera nulo.
+     */
+    public Proveedores buscarProveedores(int codigoProveedor) {
+        Proveedores resultado = null;
+        try {
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedores(?)}");
+            procedimiento.setInt(1, codigoProveedor);
+            ResultSet registro = procedimiento.executeQuery();
+            while (registro.next()) {
+                resultado = new Proveedores(registro.getInt("codigoProveedor"),
+                        registro.getString("NITProveedor"),
+                        registro.getString("nombresProveedor"),
+                        registro.getString("apellidosProveedor"),
+                        registro.getString("direccionProveedor"),
+                        registro.getString("razonSocial"),
+                        registro.getString("contactoPrincipal"),
+                        registro.getString("paginaWeb"));
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -462,8 +489,8 @@ public class MenuProductosController implements Initializable {
         txtPrecioMPro.clear();
         txtExistenciaPro.clear();
         tblProductos.getSelectionModel().getSelectedItem();
-        cmbCodigoTipoP.getSelectionModel().getSelectedItem();
-        cmbCodProvPro.getSelectionModel().getSelectedItem();
+        cmbCodigoTipoP.setValue(null);
+        cmbCodProvPro.setValue(null);
     }
 
     // Referencia a la clase Main donde establece al escenario principal.

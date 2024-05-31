@@ -120,7 +120,7 @@ public class MenuTelefonoProveedorController implements Initializable {
         txtNumPrinProve.setText(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getNumeroPrincipal());
         txtNumSecunProve.setText(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getNumeroSecundario());
         txtObsProve.setText(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getObservaciones());
-
+        cmbCodProvProve.getSelectionModel().select(buscarProveedores(((TelefonoProveedor) tblTelefonoProveedor.getSelectionModel().getSelectedItem()).getCodigoProveedor()));
     }
 
     /*
@@ -130,7 +130,7 @@ public class MenuTelefonoProveedorController implements Initializable {
     public Proveedores buscarProveedores(int codigoProveedor) {
         Proveedores resultado = null;
         try {
-            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedores()}");
+            PreparedStatement procedimiento = Conexion.getInstance().getConexion().prepareCall("{call sp_buscarProveedores(?)}");
             procedimiento.setInt(1, codigoProveedor);
             ResultSet registro = procedimiento.executeQuery();
             while (registro.next()) {
@@ -407,7 +407,7 @@ public class MenuTelefonoProveedorController implements Initializable {
         txtNumSecunProve.clear();
         txtObsProve.clear();
         tblTelefonoProveedor.getSelectionModel().getSelectedItem();
-        cmbCodProvProve.getSelectionModel().getSelectedItem();
+        cmbCodProvProve.setValue(null);
     }
 
     // Referencia a la clase Main donde establece al escenario principal.

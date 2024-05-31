@@ -43,7 +43,7 @@ public class TipoProducto {
     // Se hace un to String para que nos muestre los datos al momento de listar el comboBox de la clase TipoProducto
     @Override
     public String toString() {
-        return getCodigoTipoProducto() + " " + getDescripcion();
+        return getCodigoTipoProducto() + "   " + getDescripcion();
     }
 
 }
