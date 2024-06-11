@@ -1,4 +1,4 @@
-drop database if exists DBKinalExpress_2023313;
+-- drop database if exists DBKinalExpress_2023313;
 create database DBKinalExpress_2023313;
 use DBKinalExpress_2023313;
 set global time_zone = '-6:00';
@@ -943,6 +943,29 @@ delimiter ;
 
 -- call sp_eliminarProductos();
 
+-- JOIN PRODUCTOS
+
+delimiter $$
+	create procedure sp_listarProductosJoin()
+	begin
+    select 
+        pro.codigoProducto,
+        tipoPro.descripcion as descripcionTipoProducto,
+        pro.descripcionProducto,
+        pro.precioUnitario,
+        pro.existencia
+    from
+        Productos pro
+    join 
+        Proveedores prov on pro.codigoProveedor = prov.codigoProveedor
+	join
+		TipoProducto tipoPro on pro.codigoTipoProducto = tipoPro.codigoTipoProducto;
+end$$
+delimiter ;
+
+call sp_listarProductosJoin();
+
+
 -- Entidad DetalleFactura procedimientos almacenados
 
 -- Agregar 
@@ -1105,3 +1128,6 @@ delimiter ;
 -- call sp_eliminarDetalleCompra();
 
 -- Triggers
+
+
+ALTER USER 'Trabajos Daniel Tuy_IN5BM** '@'localhost' IDENTIFIED WITH mysql_native_password BY 'abc123**';
