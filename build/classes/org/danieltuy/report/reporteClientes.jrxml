@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteClientes" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f28324e0-b27b-45fe-b0e5-e0e8721fd6fa">
-	<property name="ireport.zoom" value="1.3310000000000024"/>
+	<property name="ireport.zoom" value="1.6105100000000037"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="48"/>
 	<subDataset name="dataset1" uuid="8f193877-c886-4246-b499-6657f2f0deb5"/>
 	<parameter name="numeroFactura" class="java.lang.Integer" isForPrompting="false"/>
 	<queryString>
@@ -39,52 +39,87 @@
 				<reportElement x="0" y="0" width="50" height="45" uuid="13da54a0-0d70-4b90-aac6-aa2cb58deead"/>
 				<imageExpression><![CDATA["C:\\Users\\Tuchez\\Documents\\Tareas KINAL 2024\\INFORMATICA\\kinalExpress1.0\\src\\org\\danieltuy\\images\\LOGOEMPRESA.png"]]></imageExpression>
 			</image>
+			<staticText>
+				<reportElement x="308" y="668" width="166" height="20" uuid="43c70810-3755-4e11-a384-a381560eaf0a"/>
+				<textElement>
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<text><![CDATA[FIRMA DE LA EMPRESA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="309" y="657" width="165" height="1" uuid="4c074eac-e072-49a8-a552-db0f6d5a0f91"/>
+				<graphicElement>
+					<pen lineWidth="5.0"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement x="331" y="553" width="117" height="135" uuid="287bc311-d44d-4e61-83e6-7a2031082f51"/>
+				<imageExpression><![CDATA["C:\\Users\\Tuchez\\Documents\\Tareas KINAL 2024\\INFORMATICA\\kinalExpress1.0\\src\\org\\danieltuy\\images\\FIRMA DANIEL TUY.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="101" y="637" width="166" height="20" uuid="68c2a4d7-50f2-4bb5-a9c5-58fd2adf75f4"/>
+				<textElement>
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<text><![CDATA[www.KinalExpress.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="658" width="166" height="20" uuid="66e339b6-34be-4923-b445-e594dee8f3e3"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[Comunicate al: 2035-8954]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="101" y="678" width="166" height="20" uuid="a183643b-ce36-41dd-85ee-abb74acefbfd"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[Horario de 8:00 A.M a 10 P.M ]]></text>
+			</staticText>
 		</band>
 	</background>
 	<title>
 		<band height="81" splitType="Stretch">
 			<staticText>
-				<reportElement x="183" y="14" width="193" height="24" uuid="244d7881-fdf9-407c-92b0-40e28a61b5b9"/>
+				<reportElement x="168" y="14" width="214" height="27" uuid="244d7881-fdf9-407c-92b0-40e28a61b5b9"/>
 				<textElement>
-					<font size="18" isBold="true"/>
+					<font size="20" isBold="true"/>
 				</textElement>
 				<text><![CDATA[REPORTE CLIENTES]]></text>
 			</staticText>
-			<line>
-				<reportElement x="0" y="80" width="555" height="1" uuid="8820eae4-8a93-4acc-a6e5-f1452e26d446"/>
-			</line>
 		</band>
 	</title>
 	<pageHeader>
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="31" splitType="Stretch">
+		<band height="24" splitType="Stretch">
 			<staticText>
-				<reportElement x="0" y="0" width="115" height="20" uuid="b7e8651d-7445-4b73-8803-f076a3ec51a6"/>
+				<reportElement x="1" y="0" width="115" height="20" uuid="b7e8651d-7445-4b73-8803-f076a3ec51a6"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Nombre del cliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="154" y="0" width="113" height="20" uuid="73119cbf-048d-430f-b549-018d4d23785f"/>
+				<reportElement x="144" y="0" width="123" height="20" uuid="73119cbf-048d-430f-b549-018d4d23785f"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Apellido del cliente]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="302" y="0" width="54" height="20" uuid="4edbb96a-5ce1-4293-bc01-f1ebdf87f7a3"/>
+				<reportElement x="302" y="0" width="63" height="20" uuid="4edbb96a-5ce1-4293-bc01-f1ebdf87f7a3"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Dirección]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="461" y="0" width="52" height="20" uuid="03dca938-5b15-4886-b79a-5a0c0ee375c0"/>
+				<reportElement x="448" y="0" width="52" height="20" uuid="03dca938-5b15-4886-b79a-5a0c0ee375c0"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
 				<text><![CDATA[Telefono ]]></text>
 			</staticText>
@@ -95,28 +130,28 @@
 			<textField>
 				<reportElement x="20" y="1" width="115" height="20" uuid="fb379d5d-891b-4f87-98a6-3acb8ab013ca"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{nombresCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="154" y="1" width="103" height="20" uuid="70f1dadf-a70e-4ae7-8224-228745e37362"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{apellidosCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="267" y="1" width="141" height="20" uuid="59456c42-f845-4d46-93fc-c75c244209e8"/>
+				<reportElement x="258" y="1" width="150" height="52" uuid="59456c42-f845-4d46-93fc-c75c244209e8"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="10"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{direccionCliente}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="424" y="0" width="113" height="20" uuid="17c939ce-2855-4b89-8eef-5ba45d1b6474"/>
+				<reportElement x="437" y="0" width="113" height="20" uuid="17c939ce-2855-4b89-8eef-5ba45d1b6474"/>
 				<textElement>
-					<font size="12"/>
+					<font fontName="Century Gothic" size="14"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{telefonoCliente}]]></textFieldExpression>
 			</textField>
@@ -132,14 +167,13 @@
 			<line>
 				<reportElement x="408" y="0" width="1" height="53" uuid="8143bc27-45a5-4261-aad4-d636a83e60da"/>
 			</line>
+			<line>
+				<reportElement x="1" y="53" width="555" height="1" uuid="9bc65800-fbd5-4b4e-99a6-a0540bf9ad93"/>
+			</line>
 		</band>
 	</detail>
 	<columnFooter>
-		<band height="45" splitType="Stretch">
-			<line>
-				<reportElement x="0" y="0" width="565" height="1" uuid="adfd37ce-b99e-4345-a7ee-6ae596621024"/>
-			</line>
-		</band>
+		<band height="40" splitType="Stretch"/>
 	</columnFooter>
 	<pageFooter>
 		<band height="54" splitType="Stretch"/>

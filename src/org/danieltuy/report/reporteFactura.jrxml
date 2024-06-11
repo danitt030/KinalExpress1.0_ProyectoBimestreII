@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteFactura" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b7855124-f834-4259-b6e5-8ae958f1ba8e">
 	<property name="ireport.zoom" value="1.100000000000001"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="796"/>
 	<parameter name="numeroFactura" class="java.lang.Integer">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -87,7 +87,7 @@
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="577" height="800" uuid="1576c0db-ff7c-4468-bd8b-e814ea5e26e4"/>
+				<reportElement x="0" y="0" width="555" height="800" uuid="1576c0db-ff7c-4468-bd8b-e814ea5e26e4"/>
 				<imageExpression><![CDATA["C:\\Users\\Tuchez\\Documents\\Tareas KINAL 2024\\INFORMATICA\\kinalExpress1.0\\src\\org\\danieltuy\\images\\ReporteFactura.png"]]></imageExpression>
 			</image>
 		</band>

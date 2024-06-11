@@ -171,6 +171,10 @@ call sp_agregarClientes(161481461, '56464899-8', 'Javier Eduardo', 'Herrera Pere
 call sp_agregarClientes(154664846, '15161655-1', 'Andres Miguel', 'Tuy Tuchez', 'Avenida 16-33 Zona 10', '15645616', 'amtt100@gmail.com');
 call sp_agregarClientes(564980398, '19498494-2', 'Luis pedro', 'Alay Lopez', 'Avenida 97-14 Majaditas', '79893567', 'luisAlay@gmail.com');
 call sp_agregarClientes(454894988, '65465467-9', 'Erick Jahir', 'Socop Colindres', 'Avenida 97-45 San Miguel Petapa', '45645678', 'erickSocop@gmail.com');
+call sp_agregarClientes(114151415, '12345678-9', 'Ana María', 'Pérez González', 'Calle 123, Zona 1, Ciudad de Guatemala', '12345678', 'ana.perez@gmail.com');
+call sp_agregarClientes(565651111, '98765432-1', 'Carlos Enrique', 'López Martínez', 'Boulevard Los Próceres 10-50, Zona 10, Ciudad de Guatemala', '87654321', 'carlos.lopez@gmail.com');
+call sp_agregarClientes(515151518, '56473829-2', 'María Fernanda', 'Rodríguez Ramírez', 'Avenida Las Américas 5-67, Zona 13, Ciudad de Guatemala', '56473829', 'maria.rodriguez@gmail.com');
+
 
 -- Listar 
 
@@ -194,7 +198,7 @@ delimiter $$
 	end$$
 delimiter ;
 
-call sp_buscarClientes(123456789);
+call sp_buscarClientes(123456789);	
 call sp_buscarClientes(161481461);
 call sp_buscarClientes(154664846);
 call sp_buscarClientes(564980398);

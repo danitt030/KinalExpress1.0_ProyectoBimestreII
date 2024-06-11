@@ -431,10 +431,9 @@ public class MenuFacturaController implements Initializable {
     public void imprimirReportes() {
         Map parametros = new HashMap();
         int numeroFactura = Integer.valueOf(((Factura)tblFactura.getSelectionModel().getSelectedItem()).getNumeroFactura());
-        parametros.put(numeroFactura, numeroFactura);
+        parametros.put("numeroFactura", numeroFactura);
         GenerarReportes.mostrarReportes("reporteFactura.jasper", "Reporte de factura", parametros);
         
-
     }
 
     // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.
