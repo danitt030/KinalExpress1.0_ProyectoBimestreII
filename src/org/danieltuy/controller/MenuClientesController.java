@@ -324,11 +324,11 @@ public class MenuClientesController implements Initializable {
         }
     }
     
-        public void imprimirReportes(){
+    public void imprimirReportes() {
         Map parametros = new HashMap();
         parametros.put("codigoCliente", null);
         GenerarReportes.mostrarReportes("reporteClientes.jasper", "Reporte de Clientes", parametros);
-        
+
     }
 
     // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.

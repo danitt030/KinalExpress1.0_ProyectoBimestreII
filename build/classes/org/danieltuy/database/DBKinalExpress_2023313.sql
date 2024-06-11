@@ -788,10 +788,10 @@ create procedure sp_agregarFactura (in numFac int, in estadFac varchar(50), in t
 	end$$
 delimiter ;
 
-call sp_agregarFactura(1, 'Pagado', 100.00, '2023-05-21', 123456789, 1 );
-call sp_agregarFactura(2, 'Pagado', 50.00, '2023-02-14', 161481461, 2 );
-call sp_agregarFactura(3, 'No Pagado', 250.00, '2023-02-14', 154664846, 3);
-call sp_agregarFactura(4, 'No Pagado', 10.00, '2023-04-18', 564980398, 4 );
+call sp_agregarFactura(1, 'Pagado', 16.00, '2023-05-21', 123456789, 1 );
+call sp_agregarFactura(2, 'Pagado', 40.00, '2023-02-14', 161481461, 2 );
+call sp_agregarFactura(3, 'No Pagado', 108.00, '2023-02-14', 154664846, 3);
+call sp_agregarFactura(4, 'No Pagado', 45.00, '2023-04-18', 564980398, 4 );
 call sp_agregarFactura(5, 'Pagado', 100.00, '2023-06-20', 454894988, 5 );
 
 -- Listar 
@@ -1127,6 +1127,13 @@ delimiter ;
 
 -- call sp_eliminarDetalleCompra();
 
+-- JOIN FACTURA
+
+select * from detallefactura
+	join factura on detallefactura.numeroFactura = factura.numeroFactura
+    join clientes on factura.codigoCliente = clientes.codigoCliente
+    join productos on detallefactura.codigoProducto = productos.codigoProducto
+    where factura.numeroFactura = 1;
 -- Triggers
 
 
