@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteProductos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="fab9a24e-6000-46d1-900d-700463150412">
-	<property name="ireport.zoom" value="0.5644739300537776"/>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteProductos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e46dde3-0a45-472c-a5c0-9fa8943af460">
+	<property name="ireport.zoom" value="1.331000000000003"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="315"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
-		<![CDATA[call sp_listarProductosJoin();
-]]>
+		<![CDATA[call sp_listarProductosJoin]]>
 	</queryString>
 	<field name="codigoProducto" class="java.lang.String">
 		<fieldDescription><![CDATA[]]></fieldDescription>
@@ -23,22 +22,162 @@
 	<background>
 		<band height="802" splitType="Stretch">
 			<image>
-				<reportElement x="0" y="0" width="555" height="802" uuid="4e4794ab-3159-4116-8080-6a77765de421"/>
+				<reportElement x="0" y="0" width="555" height="802" uuid="2d930ecf-bf5a-4f03-a197-67d26f9a8a42"/>
 				<imageExpression><![CDATA["C:\\Users\\Tuchez\\Documents\\Tareas KINAL 2024\\INFORMATICA\\kinalExpress1.0\\src\\org\\danieltuy\\images\\ReporteProductos.png"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="0" y="0" width="50" height="45" uuid="10987418-4d27-4d3d-b4ed-8e7acd9ebc82"/>
+				<imageExpression><![CDATA["C:\\Users\\Tuchez\\Documents\\Tareas KINAL 2024\\INFORMATICA\\kinalExpress1.0\\src\\org\\danieltuy\\images\\LOGOEMPRESA.png"]]></imageExpression>
+			</image>
+			<line>
+				<reportElement x="307" y="643" width="165" height="1" uuid="f1b421b3-effe-42d8-a263-c5650fce3229"/>
+				<graphicElement>
+					<pen lineWidth="5.0"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="307" y="655" width="166" height="20" forecolor="#FFFFFF" uuid="9992d13b-a99c-4c28-a700-b93f9299f2cc"/>
+				<textElement>
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<text><![CDATA[FIRMA DE LA EMPRESA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="622" width="166" height="20" forecolor="#FFFFFF" uuid="11b52980-d8cf-4493-875f-2d4363347e6c"/>
+				<textElement>
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<text><![CDATA[www.KinalExpress.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="643" width="166" height="20" forecolor="#FFFFFF" uuid="0951002c-5238-4bbf-b2a5-ab08996cc54e"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<text><![CDATA[Comunicate al: 2035-8954]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="102" y="663" width="166" height="20" forecolor="#FFFFFF" uuid="9588daea-7d12-4081-8d1a-e4797dec6fb4"/>
+				<textElement>
+					<font fontName="Century Gothic" size="10"/>
+				</textElement>
+				<text><![CDATA[Horario de 8:00 A.M a 10 P.M ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="340" y="528" width="117" height="135" uuid="249bf45c-cc61-4c2d-8be2-cd9d194388eb"/>
+				<imageExpression><![CDATA["C:\\Users\\Tuchez\\Documents\\Tareas KINAL 2024\\INFORMATICA\\kinalExpress1.0\\src\\org\\danieltuy\\images\\FIRMA DANIEL TUY.png"]]></imageExpression>
 			</image>
 		</band>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="170" y="18" width="243" height="27" uuid="8f92af28-aa74-42ec-ae66-632441778608"/>
+				<textElement>
+					<font size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[REPORTE PRODUCTOS]]></text>
+			</staticText>
+		</band>
 	</title>
 	<pageHeader>
-		<band height="35" splitType="Stretch"/>
+		<band height="9" splitType="Stretch"/>
 	</pageHeader>
 	<columnHeader>
-		<band height="61" splitType="Stretch"/>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement x="12" y="1" width="90" height="20" forecolor="#FFFFFF" uuid="7bcbf2f2-ddf9-42b1-b136-7b50ef47c801"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[codigoProducto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="853d011c-4bd7-455b-a390-d43e8ee45e9f"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[precioUnitario]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="472" y="1" width="64" height="20" forecolor="#FFFFFF" uuid="861da7cd-0895-4cfb-a02f-71899ef0eb78"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[existencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="226" y="1" width="118" height="20" forecolor="#FFFFFF" uuid="387ca598-531d-4208-8214-9342232568cf"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[descripcionProducto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="137" y="1" width="68" height="20" forecolor="#FFFFFF" uuid="f8056a66-23dc-4d81-9f0e-8b1608b7d3f5"/>
+				<textElement>
+					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[Producto]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="26" width="555" height="1" uuid="09c19896-e949-4ccd-8430-0c122b6c5445"/>
+			</line>
+		</band>
 	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="345" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="b0f6e609-c70a-455c-a016-56d9d9515cc2"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{precioUnitario}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="446" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="290fecdd-5407-4b49-8965-fe18d3989cb4"/>
+				<textElement textAlignment="Center">
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{existencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="215" y="0" width="115" height="32" forecolor="#FFFFFF" uuid="68c2341b-55bc-4da7-852e-584b7223dd4e"/>
+				<textElement>
+					<font fontName="Century Gothic"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcionProducto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="105" y="0" width="100" height="32" forecolor="#FFFFFF" uuid="c8d1621e-c601-4d30-b9b4-82a7ca6157b0"/>
+				<textElement>
+					<font fontName="Century Gothic" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcionTipoProducto}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="102" y="0" width="1" height="40" uuid="5c872c94-73b5-4be4-b379-2b4de41faa3d"/>
+			</line>
+			<line>
+				<reportElement x="214" y="0" width="1" height="40" uuid="89ab323f-04f2-461c-9191-e6e8b0ff825e"/>
+			</line>
+			<line>
+				<reportElement x="344" y="0" width="1" height="40" uuid="e050de5f-ce8f-42d4-8dd0-a0a8d605f10c"/>
+			</line>
+			<line>
+				<reportElement x="445" y="0" width="1" height="40" uuid="5d183677-1fc1-4543-b708-13fdcc97b9b2"/>
+			</line>
+			<line>
+				<reportElement x="0" y="39" width="555" height="1" uuid="afbe40ba-2dd1-4127-878f-0b01d901fdc4"/>
+			</line>
+			<textField>
+				<reportElement x="49" y="0" width="41" height="20" forecolor="#FFFFFF" uuid="183e4f9d-190b-45d1-8119-4051fce7b12f"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Century Gothic" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{codigoProducto}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
 	<columnFooter>
 		<band height="45" splitType="Stretch"/>
