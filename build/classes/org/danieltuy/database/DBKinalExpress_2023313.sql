@@ -934,7 +934,7 @@ delimiter $$
     end$$
 delimiter ;
 
-call sp_actualizarProductos('1', 'Agua Rica roja 400 ml', 6.00, 72.00, 90.00, 100, 1, 1);
+call sp_actualizarProductos('1', 'Agua Rica roja 400 ml', 4.00, 72.00, 90.00, 100, 1, 1);
 
 -- Eliminar
 

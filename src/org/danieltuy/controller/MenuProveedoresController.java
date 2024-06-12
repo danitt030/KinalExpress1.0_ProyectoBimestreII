@@ -4,6 +4,8 @@ import java.net.URL;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +22,7 @@ import javafx.scene.image.ImageView;
 import javax.swing.JOptionPane;
 import org.danieltuy.bean.Proveedores;
 import org.danieltuy.db.Conexion;
+import org.danieltuy.report.GenerarReportes;
 import org.danieltuy.system.Main;
 
 /**
@@ -326,10 +329,20 @@ public class MenuProveedoresController implements Initializable {
             e.printStackTrace();
         }
     }
+    
+    public void imprimirReportes() {
+        Map parametros = new HashMap();
+        parametros.put("codigoProveedor", null);
+        GenerarReportes.mostrarReportes("reporteProveedores.jasper", "Reporte de proveedores", parametros);
+
+    }
 
     // Este metodo nos permite realizar la accion en el boton reporte y haciendo la animacion de las imagenes.
     public void reportes() {
         switch (tipoDeOperaciones) {
+            case NINGUNO:
+                imprimirReportes();
+                break;
             case ACTUALIZAR:
                 desactivarControles();
                 limpiarControles();
@@ -343,6 +356,7 @@ public class MenuProveedoresController implements Initializable {
                 break;
         }
     }
+
 
     // Este metodo lo que hace es desabilitar los txt donde ingresan los datos.
     public void desactivarControles() {
