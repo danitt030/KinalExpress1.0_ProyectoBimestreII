@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteProveedores" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="1289b0b6-933a-40d0-8255-052446f8aa3a">
 	<property name="ireport.zoom" value="1.2100000000000024"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="9"/>
+	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[call sp_listarProveedores]]>
 	</queryString>
@@ -101,7 +101,7 @@
 				<textElement textAlignment="Center">
 					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[codigoProveedor]]></text>
+				<text><![CDATA[códigoProveedor]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="111" y="2" width="88" height="20" forecolor="#FFFFFF" uuid="a9609439-582b-4863-914a-2edfa87279de"/>
@@ -111,7 +111,7 @@
 				<text><![CDATA[NITProveedor]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="229" y="2" width="57" height="20" forecolor="#FFFFFF" uuid="877d1593-3e30-4454-82fa-d25aaf47e59c"/>
+				<reportElement x="223" y="2" width="57" height="20" forecolor="#FFFFFF" uuid="877d1593-3e30-4454-82fa-d25aaf47e59c"/>
 				<textElement textAlignment="Center">
 					<font fontName="Century Gothic" size="12" isBold="true" isItalic="true"/>
 				</textElement>

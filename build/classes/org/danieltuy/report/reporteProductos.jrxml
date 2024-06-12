@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteProductos" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9e46dde3-0a45-472c-a5c0-9fa8943af460">
 	<property name="ireport.zoom" value="1.331000000000003"/>
-	<property name="ireport.x" value="0"/>
+	<property name="ireport.x" value="104"/>
 	<property name="ireport.y" value="0"/>
 	<queryString>
 		<![CDATA[call sp_listarProductosJoin]]>
@@ -90,14 +90,14 @@
 				<textElement>
 					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[codigoProducto]]></text>
+				<text><![CDATA[códigoProducto]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="357" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="853d011c-4bd7-455b-a390-d43e8ee45e9f"/>
 				<textElement>
 					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[precioUnitario]]></text>
+				<text><![CDATA[PrecioUnitario]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="472" y="1" width="64" height="20" forecolor="#FFFFFF" uuid="861da7cd-0895-4cfb-a02f-71899ef0eb78"/>
@@ -111,7 +111,7 @@
 				<textElement>
 					<font fontName="Century Gothic" size="11" isBold="true" isItalic="true"/>
 				</textElement>
-				<text><![CDATA[descripcionProducto]]></text>
+				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="137" y="1" width="68" height="20" forecolor="#FFFFFF" uuid="f8056a66-23dc-4d81-9f0e-8b1608b7d3f5"/>
